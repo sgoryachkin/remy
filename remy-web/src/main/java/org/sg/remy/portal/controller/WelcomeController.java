@@ -1,4 +1,4 @@
-package org.sg.remy.domain.restaurant.web.controller;
+package org.sg.remy.portal.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
