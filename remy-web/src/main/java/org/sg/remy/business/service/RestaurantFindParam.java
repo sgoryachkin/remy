@@ -1,4 +1,4 @@
-package org.sg.remy.portal.service;
+package org.sg.remy.business.service;
 
 public class RestaurantFindParam {
 

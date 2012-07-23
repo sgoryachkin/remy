@@ -1,4 +1,4 @@
-package org.sg.remy.portal.controller;
+package org.sg.remy.web.controller;
 
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.context.TilesRequestContext;

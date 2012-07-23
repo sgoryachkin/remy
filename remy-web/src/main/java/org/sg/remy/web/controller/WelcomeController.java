@@ -1,4 +1,4 @@
-package org.sg.remy.portal.controller;
+package org.sg.remy.web.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

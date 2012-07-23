@@ -1,8 +1,8 @@
-package org.sg.remy.portal.service;
+package org.sg.remy.business.service;
 
 import java.util.List;
 
-import org.sg.remy.portal.entity.Restaurant;
+import org.sg.remy.business.entity.Restaurant;
 
 public interface RestaurantService {
 	

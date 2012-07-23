@@ -1,9 +1,9 @@
-package org.sg.remy.portal.controller;
+package org.sg.remy.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.sg.remy.portal.entity.Restaurant;
+import org.sg.remy.business.entity.Restaurant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

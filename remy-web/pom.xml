@@ -3,12 +3,15 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sg.remy</groupId>
-	<artifactId>remy-web</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<parent>
+		<artifactId>remy</artifactId>
+		<groupId>com.sg.remy</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-	<name>Remy is restorans catalog project for the openshift redhat cloud</name>
+	<artifactId>remy-web</artifactId>
+	<packaging>war</packaging>
+	<description>Remy web module</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,7 +51,7 @@
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${org.slf4j.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -78,6 +81,7 @@
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Test scope -->
@@ -107,6 +111,7 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
+
 			</plugin>
 
 			<plugin>
@@ -120,8 +125,71 @@
 				</configuration>
 			</plugin>
 
+			<plugin>
+				<groupId>org.bsc.maven</groupId>
+				<artifactId>maven-processor-plugin</artifactId>
+				<version>2.0.5</version>
+				<executions>
+					<execution>
+						<id>process</id>
+						<goals>
+							<goal>process</goal>
+						</goals>
+						<phase>generate-sources</phase>
+						<configuration>
+							<processors>
+								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
+							</processors>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.hibernate</groupId>
+						<artifactId>hibernate-jpamodelgen</artifactId>
+						<version>1.2.0.Final</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
 		</plugins>
 
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.bsc.maven</groupId>
+										<artifactId>
+											maven-processor-plugin
+										</artifactId>
+										<versionRange>
+											[2.0.5,)
+										</versionRange>
+										<goals>
+											<goal>process</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 
