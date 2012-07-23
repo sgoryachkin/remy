@@ -200,13 +200,16 @@
 				folder. -->
 			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
 			<id>openshift</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
 			<build>
 				<plugins>
 					<plugin>
 						<artifactId>maven-war-plugin</artifactId>
-						<version>2.1.1</version>
+						<version>${maven-war-plugin.version}</version>
 						<configuration>
-							<outputDirectory>../deployments</outputDirectory>
+							<outputDirectory>deployments</outputDirectory>
 							<warName>ROOT</warName>
 						</configuration>
 					</plugin>
