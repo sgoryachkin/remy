@@ -26,21 +26,21 @@
 
 	<div id="accordion">
 		<h3>
-			<a href="/dsf/dfsf/dsf.html">Бар</a>
+			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=1">Бар</a>
 		</h3>
 		<div>
 			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget,
 				quam.</p>
 		</div>
 		<h3>
-			<a href="#">Ресторан</a>
+			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=2">Ресторан</a>
 		</h3>
 		<div>
 			<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum
 				sit amet purus. </p>
 		</div>
 		<h3>
-			<a href="#">Кафе</a>
+			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=3">Кафе</a>
 		</h3>
 		<div>
 			<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus.

@@ -11,7 +11,9 @@ public class Restaurant {
 	
 	@Id
 	public Long id;
+	
 	public String name;
+	
 	public String desc;
 	
 	@OneToMany

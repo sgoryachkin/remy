@@ -14,31 +14,39 @@
 <meta http-equiv="Content-Type"
 	content="application/xhtml+xml; charset=UTF-8" />
 
-	
+
 
 
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
-<link type="text/css" href="${pageContext.request.contextPath}/resources/jquery/css/dark-hive/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
+<link type="text/css"
+	href="${pageContext.request.contextPath}/resources/jquery/css/dark-hive/jquery-ui-1.8.21.custom.css"
+	rel="stylesheet" />
 
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/style/layout.css"
 	type="text/css" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js" >
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js">
 	;
 </script>
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js" >
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js">
 	;
 </script>
 
-<script type="text/javascript" >
+<script type="text/javascript">
 	$(function() {
-		$( "#accordion" ).accordion();
+		$( "#accordion" ).accordion({
+			active: false,
+			navigation: true,
+			event: 'mouseup',
+			fillSpace: true,
+			animated: 'easeslide'
+		});
 	});
 </script>
 
