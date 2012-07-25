@@ -3,13 +3,12 @@
 
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
 
-	<!-- an XADataSource -->
-	<New id="remyDataSource" class="org.mortbay.jetty.plus.naming.Resource">
+	<New id="ds" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg>jdbc/remy_ds</Arg>
 		<Arg>
 			<New class="org.apache.commons.dbcp.BasicDataSource">
 				<!-- <Set name="driverClassName"></Set> -->
-				<Set name="url">jdbc:h2:mem:remy;DB_CLOSE_DELAY=-1</Set>
+				<Set name="url">jdbc:hsql:mem:remy;DB_CLOSE_DELAY=-1</Set>
 				<Set name="username">sa</Set>
 				<Set name="password">sa</Set>
 			</New>
@@ -20,6 +19,17 @@
 		<Arg>java:comp/UserTransaction</Arg>
 		<Arg>
 			<New class="bitronix.tm.BitronixTransactionManager" />
+		</Arg>
+	</New>
+
+	<New id="emf" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg>persistence/remyPersistenceUnit</Arg>
+		<Arg>
+			<Call class="javax.persistence.Persistence" name="createEntityManagerFactory">
+				<Arg>
+					remyPersistenceUnit
+				</Arg>
+			</Call>
 		</Arg>
 	</New>
 
