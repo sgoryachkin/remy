@@ -36,12 +36,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>viewStatusMessages</servlet-name>
 		<url-pattern>/status</url-pattern>
 	</servlet-mapping>
-
+<!-- 
 	<persistence-unit-ref>
 		<persistence-unit-ref-name>persistence/remyPersistenceUnit</persistence-unit-ref-name>
 		<persistence-unit-name>remyPersistenceUnit</persistence-unit-name>
 	</persistence-unit-ref>
-
+ -->
 	<welcome-file-list>
 		<welcome-file>/index.html</welcome-file>
 	</welcome-file-list>
