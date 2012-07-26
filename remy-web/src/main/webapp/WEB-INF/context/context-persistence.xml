@@ -8,11 +8,14 @@
 		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
-
-	<jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/RemyPersistenceUnit"/>
 	
-	<tx:annotation-driven/>
-	<tx:jta-transaction-manager/>
+	<jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/RemyPersistenceUnit"/> 
 
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+
+	<tx:annotation-driven />
 
 </beans>

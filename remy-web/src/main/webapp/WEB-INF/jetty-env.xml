@@ -15,13 +15,6 @@
 		</Arg>
 	</New>
 
-	<New id="tx" class="org.mortbay.jetty.plus.naming.Resource">
-		<Arg>java:comp/UserTransaction</Arg>
-		<Arg>
-			<New class="bitronix.tm.BitronixTransactionManager" />
-		</Arg>
-	</New>
-
 	<New id="emf" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg>persistence/RemyPersistenceUnit</Arg>
 		<Arg>
