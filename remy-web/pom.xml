@@ -78,14 +78,17 @@
 		</dependency>
 
 		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>
 			<artifactId>hibernate-jpa-2.0-api</artifactId>
 			<version>1.0.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
-
-
-
 
 		<!-- Test scope -->
 		<dependency>
@@ -114,7 +117,6 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 				</configuration>
-
 			</plugin>
 
 			<plugin>
@@ -122,6 +124,7 @@
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>${org.mortbay.jetty.version}</version>
 				<configuration>
+
 					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<stopKey>key</stopKey>
 					<stopPort>9999</stopPort>

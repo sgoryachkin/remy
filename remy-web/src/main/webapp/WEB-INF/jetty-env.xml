@@ -4,13 +4,13 @@
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
 
 	<New id="ds" class="org.mortbay.jetty.plus.naming.Resource">
-		<Arg>jdbc/remy_ds</Arg>
+		<Arg>jdbc/RemyDataSource</Arg>
 		<Arg>
 			<New class="org.apache.commons.dbcp.BasicDataSource">
 				<Set name="driverClassName">org.hsqldb.jdbc.JDBCDriver</Set>
-				<Set name="url">jdbc:hsql:mem:remy;DB_CLOSE_DELAY=-1</Set>
+				<Set name="url">jdbc:hsqldb:file:testdb</Set>
 				<Set name="username">sa</Set>
-				<Set name="password">sa</Set>
+				<Set name="password"></Set>
 			</New>
 		</Arg>
 	</New>
@@ -23,23 +23,11 @@
 	</New>
 
 	<New id="emf" class="org.mortbay.jetty.plus.naming.Resource">
-		<Arg>persistence/remyPersistenceUnit</Arg>
+		<Arg>persistence/RemyPersistenceUnit</Arg>
 		<Arg>
 			<Call class="javax.persistence.Persistence" name="createEntityManagerFactory">
 				<Arg>
-					remyPersistenceUnit
-				</Arg>
-				<Arg>
-					<Map>
-						<Entry>
-							<Item>hibernate.dialect</Item>
-							<Item>
-								<New class="java.lang.String">
-									<Arg>org.hibernate.dialect.HSQLDialect</Arg>
-								</New>
-							</Item>
-						</Entry>
-					</Map>
+					RemyPersistenceUnit
 				</Arg>
 			</Call>
 		</Arg>

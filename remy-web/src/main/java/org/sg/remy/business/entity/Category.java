@@ -1,6 +1,7 @@
 package org.sg.remy.business.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 public class Category {
 
 	@Id
+	@GeneratedValue
 	public Long id;
 	
 	public String name;

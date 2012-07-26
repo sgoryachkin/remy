@@ -3,6 +3,8 @@ package org.sg.remy.business.entity;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -10,6 +12,7 @@ import javax.persistence.OneToMany;
 public class Restaurant {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	public Long id;
 	
 	public String name;
