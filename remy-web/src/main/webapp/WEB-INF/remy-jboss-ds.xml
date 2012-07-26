@@ -9,10 +9,10 @@
 		in META-INF/persistence.xml -->
 	<datasource jndi-name="jdbc/RemyDataSource" pool-name="RemyPool"
 		enabled="true" use-java-context="true">
-		<connection-url>jdbc:mysql://${env.OPENSHIFT_DB_HOST}:${env.OPENSHIFT_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
+		<connection-url>jdbc:mysql://127.10.231.129:3306/remytest</connection-url>
 		<driver>mysql</driver>
 		<security>
-			<user-name>${env.OPENSHIFT_DB_USERNAME}</user-name>
+			<user-name>admin</user-name>
 			<password>${env.OPENSHIFT_DB_PASSWORD}</password>
 		</security>
 	</datasource>
