@@ -7,7 +7,7 @@
 	xsi:schemaLocation="http://www.jboss.org/ironjacamar/schema http://docs.jboss.org/ironjacamar/schema/datasources_1_0.xsd">
 	<!-- The datasource is bound into JNDI at this location. We reference this 
 		in META-INF/persistence.xml -->
-	<datasource jndi-name="java:jboss/datasources/jdbc/RemyDataSource"
+	<datasource jndi-name="jdbc/RemyDataSource"
 		pool-name="RemyPool" enabled="true" use-java-context="true">
 		<connection-url>jdbc:mysql://${env.OPENSHIFT_DB_HOST}:${OPENSHIFT_DB_PORT}//${env.OPENSHIFT_APP_NAME}</connection-url>
 		<driver>mysql</driver>
