@@ -15,11 +15,11 @@ public class Restaurant {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	public Long id;
+	private Long id;
 	
-	public String name;
+	private String name;
 	
-	public String desc;
+	private String description;
 	
 	@ManyToMany
 	public Map<Long, Category> categories;
@@ -36,12 +36,13 @@ public class Restaurant {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 	
 	
 

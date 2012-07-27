@@ -14,11 +14,11 @@ public class Category {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	public Long id;
+	private Long id;
 	
-	public String name;
+	private String name;
 
-	public String desc;
+	private String description;
 	
 	public Long getId() {
 		return id;
@@ -36,12 +36,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-
+	
 }
