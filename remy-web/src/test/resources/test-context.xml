@@ -15,7 +15,7 @@
 	<context:annotation-config />
 	<mvc:annotation-driven />
 	<context:component-scan base-package="org.sg.remy.business" />
-	
+
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -24,15 +24,16 @@
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />
 				<property name="generateDdl" value="true" />
-				<property name="hbm2ddl.auto" value="create-drop"/>
 			</bean>
 		</property>
 	</bean>
 
-	<jdbc:embedded-database id="dataSource" type="HSQL"/>
+	<jdbc:embedded-database id="dataSource" type="HSQL" />
 
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
+	<tx:annotation-driven/>
 
 </beans>

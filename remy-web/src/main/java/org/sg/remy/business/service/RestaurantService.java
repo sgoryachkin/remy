@@ -1,9 +1,9 @@
 package org.sg.remy.business.service;
 
 import org.sg.remy.business.entity.Restaurant;
-import org.sg.remy.business.service.model.PagingParam;
-import org.sg.remy.business.service.model.PagingResult;
-import org.sg.remy.business.service.model.RestaurantFilter;
+import org.sg.remy.business.model.PagingParam;
+import org.sg.remy.business.model.PagingResult;
+import org.sg.remy.business.model.RestaurantFilter;
 
 public interface RestaurantService {
 	

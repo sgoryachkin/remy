@@ -11,10 +11,11 @@ import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.Category_;
 import org.sg.remy.business.entity.Restaurant;
 import org.sg.remy.business.entity.Restaurant_;
-import org.sg.remy.business.service.model.PagingParam;
-import org.sg.remy.business.service.model.PagingResult;
-import org.sg.remy.business.service.model.PagingResultImpl;
-import org.sg.remy.business.service.model.RestaurantFilter;
+import org.sg.remy.business.model.PagingParam;
+import org.sg.remy.business.model.PagingResult;
+import org.sg.remy.business.model.PagingResultImpl;
+import org.sg.remy.business.model.RestaurantFilter;
+import org.sg.remy.business.util.PagingCriteriaUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -67,9 +68,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 		pagingResult.setResult(em
 				.createQuery(cqlist)
 				.setFirstResult(
-						PagingCriteriaUtils.calcFirstRow(param.getPageSize(),
+						PagingCriteriaUtils.calcFirstResult(param.getPageSize(),
 								param.getPage()).intValue())
-				.setMaxResults(param.getPage().intValue()).getResultList());
+				.setMaxResults(((Long)(param.getPageSize())).intValue()).getResultList());
 
 		return pagingResult;
 	}
