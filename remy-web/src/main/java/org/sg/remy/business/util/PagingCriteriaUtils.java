@@ -11,5 +11,7 @@ public class PagingCriteriaUtils {
 	public static Long calcFirstResult(Long pageSize, Long page){
 		return pageSize * (page - 1);
 	}
+	
+	
 
 }
