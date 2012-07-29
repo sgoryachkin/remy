@@ -1,5 +1,6 @@
 package org.sg.remy.business.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -10,6 +11,7 @@ import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.Restaurant;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
+import org.sg.remy.business.model.RestaurantFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -88,16 +90,17 @@ public class RestaurantServiceImplTest {
 		
 		Long pageSize = 7l;
 		List<Category> categories = categoryService.getAll();
-		PagingResult<Restaurant> result = restaurantService.findByCategory(new PagingParam<Long>(1l, pageSize, categories.get(0).getId()));		
+		List<Long> categoryIds = new ArrayList<Long>();
+		for (Category category : categories) {
+			categoryIds.add(category.getId());
+		}
+		
+		RestaurantFilter filter = new RestaurantFilter();
+		filter.setCategoryIds(categoryIds);
+		
+		PagingResult<Restaurant> result = restaurantService.find(new PagingParam<RestaurantFilter>(1l, pageSize, filter));		
 		Assert.assertEquals(pageSize, Long.valueOf(result.getResult().size()));
-		
-		
-		result = restaurantService.findByCategory(new PagingParam<Long>(1l, 50l, categories.get(0).getId()));		
-		Assert.assertEquals(Long.valueOf(6l), result.getPageCount());
-		
-		
-		
-		
+			
 	}
 
 }

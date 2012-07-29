@@ -10,6 +10,7 @@ public class PagingResultImpl<T> implements PagingResult<T>, Serializable {
 	private Long count;
 	private Long pageCount;
 	private List<T> result;
+	private Long page;
 
 	public PagingResultImpl() {
 	}
@@ -43,6 +44,15 @@ public class PagingResultImpl<T> implements PagingResult<T>, Serializable {
 	public void setPageCount(Long pageCount) {
 		this.pageCount = pageCount;
 	}
+
+	@Override
+	public Long getPage() {
+		return page;
+	}
+
+	public void setPage(Long page) {
+		this.page = page;
+	}
 	
 	@Override
 	public String toString() {
@@ -53,6 +63,8 @@ public class PagingResultImpl<T> implements PagingResult<T>, Serializable {
 		builder.append(pageCount);
 		builder.append(", result=");
 		builder.append(result);
+		builder.append(", page=");
+		builder.append(page);
 		builder.append("]");
 		return builder.toString();
 	}

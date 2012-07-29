@@ -6,51 +6,22 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
 
-	<table>
-		<tr>
-			<td colspan="2" style="font-weight: bold;">Available URLs:</td>
-		</tr>
-		<tr>
-			<td><a href="find">List</a></td>
-		</tr>
-		<tr>
-			<td>
-				<h2>
-					<c:out value="${menu}" />
-				</h2>
-			</td>
-		</tr>
-
-
-	</table>
-
 	<div id="accordion">
-		<h3>
-			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=1">Бар</a>
-		</h3>
-		<div>
-			<p>Mauris mauris ante, blandit et, ultrices a, suscipit eget,
-				quam.</p>
-		</div>
-		<h3>
-			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=2">Ресторан</a>
-		</h3>
-		<div>
-			<p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum
-				sit amet purus. </p>
-		</div>
-		<h3>
-			<a href="${pageContext.request.contextPath}/dispatcher/restaurant/find?category=3">Кафе</a>
-		</h3>
-		<div>
-			<p>Nam enim risus, molestie et, porta ac, aliquam ac, risus.
-				Quisque lobortis. .</p>
-			<ul>
-				<li>List item one</li>
-				<li>List item two</li>
-				<li>List item three</li>
-			</ul>
-		</div>
+
+		<c:forEach items="${categories}" var="bean">
+			<h3>
+				<a
+					href="#{pageContext.request.contextPath + '/dispatcher/restaurant/find?page=1&category=' + bean.id}">
+					<c:out value="${bean.name}" />
+				</a>
+			</h3>
+			<div>
+				<p>
+					<c:out value="${bean.description}" />
+				</p>
+			</div>
+		</c:forEach>
+
 	</div>
 
 

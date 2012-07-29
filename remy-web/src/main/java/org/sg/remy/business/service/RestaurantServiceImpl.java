@@ -37,7 +37,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 	}
 
 	@Override
-	public PagingResult<Restaurant> findByCategory(PagingParam<Long> param) {
+	public PagingResult<Restaurant> find(PagingParam<RestaurantFilter> param) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 
 		CriteriaQuery<Restaurant> cqlist = em.getCriteriaBuilder().createQuery(
@@ -50,17 +50,18 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 		Join<Restaurant, Category> listJoinToCategory = rlist
 				.join(Restaurant_.categories);
-		cqlist.where(cb.equal(listJoinToCategory.get(Category_.id),
-				param.getFilter()));
+		cqlist.where(listJoinToCategory.get(Category_.id).in(
+				param.getFilter().getCategoryIds()));
 
 		Join<Restaurant, Category> countJoinToCategory = rcount
 				.join(Restaurant_.categories);
-		cqcount.where(cb.equal(countJoinToCategory.get(Category_.id),
-				param.getFilter()));
+		cqcount.where(countJoinToCategory.get(Category_.id).in(
+				param.getFilter().getCategoryIds()));
 		cqcount.select(cb.count(rcount));
 
 		PagingResultImpl<Restaurant> pagingResult = new PagingResultImpl<Restaurant>();
 
+		pagingResult.setPage(param.getPage());
 		pagingResult.setCount(em.createQuery(cqcount).getSingleResult());
 		pagingResult.setPageCount(PagingCriteriaUtils.calcPageCount(
 				pagingResult.getCount(), param.getPageSize()));
@@ -68,18 +69,13 @@ public class RestaurantServiceImpl implements RestaurantService {
 		pagingResult.setResult(em
 				.createQuery(cqlist)
 				.setFirstResult(
-						PagingCriteriaUtils.calcFirstResult(param.getPageSize(),
-								param.getPage()).intValue())
-				.setMaxResults(((Long)(param.getPageSize())).intValue()).getResultList());
+						PagingCriteriaUtils.calcFirstResult(
+								param.getPageSize(), param.getPage())
+								.intValue())
+				.setMaxResults(((Long) (param.getPageSize())).intValue())
+				.getResultList());
 
 		return pagingResult;
-	}
-
-	@Override
-	public PagingResult<Restaurant> findByFilter(
-			PagingParam<RestaurantFilter> param) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

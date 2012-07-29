@@ -1,4 +1,4 @@
-package org.sg.remy.business;
+package org.sg.remy.dev;
 
 import java.util.List;
 
@@ -62,13 +62,17 @@ public class InitDBComponent {
 
 	public void initRestaurant(){
 		List<Category> categories = categoryService.getAll();
-		Restaurant rest1 = new Restaurant();
-		rest1.setName("Заведение1");
-		rest1.setDescription("Описание заведение1");
-		rest1.setCategories(categories);
-		restaurantService.save(rest1);
-		rest1.setId(null);
-		restaurantService.save(rest1);
+		
+		for (int i = 0; i < 251; i++) {
+			Restaurant r = new Restaurant();
+			r.setCategories(categories);
+			r.setName("Заведение " + i);
+			r.setDescription("Описание для заведения");
+			r.setCategories(categories);
+			restaurantService.save(r);
+			
+		}
+
 	}
 
 }

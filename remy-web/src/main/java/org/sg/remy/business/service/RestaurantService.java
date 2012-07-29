@@ -9,7 +9,6 @@ public interface RestaurantService {
 	
 	Restaurant get(Long id);
 	void save(Restaurant restaurant);
-	PagingResult<Restaurant> findByCategory(PagingParam<Long> param);
-	PagingResult<Restaurant> findByFilter(PagingParam<RestaurantFilter> param);
+	PagingResult<Restaurant> find(PagingParam<RestaurantFilter> param);
 	
 }
