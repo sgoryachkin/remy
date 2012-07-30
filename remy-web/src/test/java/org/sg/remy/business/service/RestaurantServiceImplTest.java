@@ -25,7 +25,7 @@ public class RestaurantServiceImplTest {
 	RestaurantService restaurantService;
 	
 	@Autowired
-	CategoryService categoryService;
+	ReferenceService referenceService;
 	
 	
 	@Before
@@ -58,19 +58,19 @@ public class RestaurantServiceImplTest {
 		Category category7 = new Category();
 		category2.setName("Клубы");
 		
-		categoryService.save(category1);
-		categoryService.save(category2);
-		categoryService.save(category3);
-		categoryService.save(category4);
-		categoryService.save(category5);
-		categoryService.save(category6);
-		categoryService.save(category7);
+		referenceService.save(category1);
+		referenceService.save(category2);
+		referenceService.save(category3);
+		referenceService.save(category4);
+		referenceService.save(category5);
+		referenceService.save(category6);
+		referenceService.save(category7);
 			
 	}
 	
 
 	public void initRestaurant(){
-		List<Category> categories = categoryService.getAll();
+		List<Category> categories = referenceService.getAll(Category.class);
 		
 		for (int i = 0; i < 251; i++) {
 			Restaurant r = new Restaurant();
@@ -89,7 +89,7 @@ public class RestaurantServiceImplTest {
 	public void findByCategorySuccess(){
 		
 		Long pageSize = 7l;
-		List<Category> categories = categoryService.getAll();
+		List<Category> categories = referenceService.getAll(Category.class);
 		List<Long> categoryIds = new ArrayList<Long>();
 		for (Category category : categories) {
 			categoryIds.add(category.getId());

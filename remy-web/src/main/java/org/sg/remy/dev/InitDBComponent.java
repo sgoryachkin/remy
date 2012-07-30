@@ -5,8 +5,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.Kitchen;
 import org.sg.remy.business.entity.Restaurant;
-import org.sg.remy.business.service.CategoryService;
+import org.sg.remy.business.service.ReferenceService;
 import org.sg.remy.business.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class InitDBComponent {
 	
 	@Autowired
-	CategoryService categoryService;
+	ReferenceService referenceService;
 	
 	@Autowired
 	RestaurantService restaurantService;
@@ -35,33 +36,47 @@ public class InitDBComponent {
 		category2.setName("Кафе");
 		
 		Category category3 = new Category();
-		category2.setName("Доставка");
+		category3.setName("Доставка");
 		
 		Category category4 = new Category();
-		category2.setName("Заведения 18+");
+		category4.setName("Заведения 18+");
 		
 		Category category5 = new Category();
-		category2.setName("Рестораны");
+		category5.setName("Рестораны");
 		
 		Category category6 = new Category();
-		category2.setName("Fast Food");
+		category6.setName("Fast Food");
 		
 		Category category7 = new Category();
-		category2.setName("Клубы");
+		category7.setName("Клубы");
 		
-		categoryService.save(category1);
-		categoryService.save(category2);
-		categoryService.save(category3);
-		categoryService.save(category4);
-		categoryService.save(category5);
-		categoryService.save(category6);
-		categoryService.save(category7);
+		referenceService.save(category1);
+		referenceService.save(category2);
+		referenceService.save(category3);
+		referenceService.save(category4);
+		referenceService.save(category5);
+		referenceService.save(category6);
+		referenceService.save(category7);
+		
+		Kitchen kitchen1 = new Kitchen();
+		kitchen1.setName("Японская");
+		
+		Kitchen kitchen2 = new Kitchen();
+		kitchen2.setName("Китайская");
+		
+		Kitchen kitchen3 = new Kitchen();
+		kitchen3.setName("Друидская");
+		
+		referenceService.save(kitchen1);
+		referenceService.save(kitchen2);
+		referenceService.save(kitchen3);
+		
 			
 	}
 	
 
 	public void initRestaurant(){
-		List<Category> categories = categoryService.getAll();
+		List<Category> categories = referenceService.getAll(Category.class);
 		
 		for (int i = 0; i < 251; i++) {
 			Restaurant r = new Restaurant();

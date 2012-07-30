@@ -10,8 +10,8 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Category {
-
+public class Category implements Reference{
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
@@ -43,5 +43,6 @@ public class Category {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	
 }

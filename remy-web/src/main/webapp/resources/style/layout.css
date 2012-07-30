@@ -3,7 +3,7 @@
 #layout-container {
   	margin:auto;
   	width: 1000px; 
-  	background: #1fffff;
+  	background: #ffffff;
 }
 
 #layout-header {
@@ -21,7 +21,7 @@
 	float:left;
 	width:700px;
 	height:100%;
-	background-color: #cdcde6;
+	background-color: #ffffff;
 }
 
 #layout-right {
@@ -32,5 +32,5 @@
 
 #layout-footer {
 	clear:both;
-	background:#DDDDDD;
+	background:#ffffff;
 } 

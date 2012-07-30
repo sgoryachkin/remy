@@ -6,19 +6,23 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
 
-	<div id="accordion">
+	<div id="menu">
 
-		<c:forEach items="${categories}" var="bean">
-			<h3>
-				<a
-					href="#{pageContext.request.contextPath + '/dispatcher/restaurant/find?page=1&category=' + bean.id}">
-					<c:out value="${bean.name}" />
-				</a>
-			</h3>
+		<c:forEach items="${menus}" var="bean">
 			<div>
-				<p>
-					<c:out value="${bean.description}" />
-				</p>
+				<h3>
+					<a href="#"><c:out value="${bean.name}" /></a>
+				</h3>
+				<div>
+
+						<c:forEach items="${bean.items}" var="item">
+							<a href="${item.url}"> <c:out
+										value="${item.caption}" />
+							</a>
+							<br/>
+						</c:forEach>
+
+				</div>
 			</div>
 		</c:forEach>
 
