@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.entity.Restaurant;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
@@ -37,26 +38,42 @@ public class RestaurantServiceImplTest {
 
 	public void initCategory(){
 		
+		
 		Category category1 = new Category();
 		category1.setName("Бары");
+		category1.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category2 = new Category();
 		category2.setName("Кафе");
+		category2.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category3 = new Category();
-		category2.setName("Доставка");
+		category3.setName("Доставка");
+		category3.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category4 = new Category();
-		category2.setName("Заведения 18+");
+		category4.setName("Заведения 18+");
+		category4.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category5 = new Category();
-		category2.setName("Рестораны");
+		category5.setName("Рестораны");
+		category5.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category6 = new Category();
-		category2.setName("Fast Food");
+		category6.setName("Fast Food");
+		category6.setCategoryType(CategoryType.CATEGORY);
 		
 		Category category7 = new Category();
-		category2.setName("Клубы");
+		category7.setName("Клубы");
+		category7.setCategoryType(CategoryType.CATEGORY);
+		
+		Category category8 = new Category();
+		category8.setName("Японская");
+		category8.setCategoryType(CategoryType.KITCHEN);
+		
+		Category category9 = new Category();
+		category9.setName("Корейская");
+		category9.setCategoryType(CategoryType.KITCHEN);
 		
 		referenceService.save(category1);
 		referenceService.save(category2);
@@ -65,12 +82,16 @@ public class RestaurantServiceImplTest {
 		referenceService.save(category5);
 		referenceService.save(category6);
 		referenceService.save(category7);
+		referenceService.save(category8);
+		referenceService.save(category9);
+		
+		
 			
 	}
 	
 
 	public void initRestaurant(){
-		List<Category> categories = referenceService.getAll(Category.class);
+		List<Category> categories = referenceService.getCategoriesByType(CategoryType.CATEGORY);
 		
 		for (int i = 0; i < 251; i++) {
 			Restaurant r = new Restaurant();
@@ -89,7 +110,7 @@ public class RestaurantServiceImplTest {
 	public void findByCategorySuccess(){
 		
 		Long pageSize = 7l;
-		List<Category> categories = referenceService.getAll(Category.class);
+		List<Category> categories = referenceService.getCategoriesByType(CategoryType.CATEGORY);
 		List<Long> categoryIds = new ArrayList<Long>();
 		for (Category category : categories) {
 			categoryIds.add(category.getId());

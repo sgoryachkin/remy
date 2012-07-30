@@ -1,6 +1,5 @@
 package org.sg.remy.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.sg.remy.business.entity.Restaurant;
@@ -30,18 +29,12 @@ public class RestaurantController {
 	public static final String MAPPING_SHOW = "welcome";
 
 	@RequestMapping(value = MAPPING_LIST, method = RequestMethod.GET)
-	public PagingResult<Restaurant> find(@RequestParam Long category,
-			@RequestParam Long page) {
+	public PagingResult<Restaurant> find(
+			@RequestParam(required = true, defaultValue = "1l") Long page,
+			@RequestParam(required = false) List<Long> category){
 
-		List<Long> categories = new ArrayList<Long>();
-		if (category != null) {
-			categories.add(category);
-		}
-		if (page == null) {
-			page = 1l;
-		}
 		RestaurantFilter restaurantFilter = new RestaurantFilter();
-		restaurantFilter.setCategoryIds(categories);
+		restaurantFilter.setCategoryIds(category);
 		PagingParam<RestaurantFilter> param = new PagingParam<RestaurantFilter>(
 				page, 10l, restaurantFilter);
 

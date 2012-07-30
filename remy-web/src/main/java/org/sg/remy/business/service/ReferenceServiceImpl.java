@@ -5,8 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-import org.sg.remy.business.entity.Reference;
+import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.CategoryType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,27 +20,29 @@ public class ReferenceServiceImpl implements ReferenceService {
 	EntityManager em;
 
 	@Override
-	public void save(Reference category) {
+	public void save(Category category) {
 		em.persist(category);
-		
 	}
 
 	@Override
-	public <T extends Reference> T get(Class<T> clazz, Long id) {
-		return em.find(clazz, id);
+	public Category get(Long id) {
+		return em.find(Category.class, id);
 	}
 
 	@Override
-	public <T extends Reference> List<T> getAll(Class<T> clazz) {
-		CriteriaQuery<T> c = em.getCriteriaBuilder().createQuery(clazz);
-		c.from(clazz);
-		return em.createQuery(c).getResultList();
+	public List<Category> getCategoriesByType(CategoryType categoryType) {
+		CriteriaQuery<Category> cq = em.getCriteriaBuilder().createQuery(
+				Category.class);		// TODO Auto-generated method stub
+		Root<Category> root = cq.from(Category.class);
+		// cq.where(root.get(Category_.))
+
+		return em.createQuery(cq).getResultList();
 	}
 
 	@Override
-	public <T extends Reference> List<T> getAllNoEmpty(Class<T> clazz) {
-		// TODO Нужна реализация выбора не пустых справочников
-		return getAll(clazz);
+	public List<Category> getCategoriesByTypeNoEmpty(CategoryType categoryType) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

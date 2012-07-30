@@ -1,25 +1,23 @@
 package org.sg.remy.business.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * @author sgoryachkin
- *
- */
 @Entity
-public class Category implements Reference{
+public class Category {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
 	private String name;
-
-	private String description;
 	
+	@Column(nullable = false)
+	private CategoryType categoryType;
+
 	public Long getId() {
 		return id;
 	}
@@ -36,13 +34,12 @@ public class Category implements Reference{
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
+	public CategoryType getCategoryType() {
+		return categoryType;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCategoryType(CategoryType categoryType) {
+		this.categoryType = categoryType;
 	}
 
-	
 }

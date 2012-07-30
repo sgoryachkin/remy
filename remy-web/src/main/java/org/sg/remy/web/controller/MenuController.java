@@ -9,15 +9,13 @@ import org.apache.tiles.AttributeContext;
 import org.apache.tiles.context.TilesRequestContext;
 import org.apache.tiles.preparer.ViewPreparerSupport;
 import org.sg.remy.business.entity.Category;
-import org.sg.remy.business.entity.Kitchen;
-import org.sg.remy.business.entity.Reference;
+import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.service.ReferenceService;
 import org.sg.remy.web.model.Menu;
 import org.sg.remy.web.model.MenuItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -40,14 +38,14 @@ public class MenuController extends ViewPreparerSupport{
         // Get access to model parameters from MainController as example
         //String message = (String) tilesContext.getRequestScope().get("message");
     	
-    	List<Category> categories = referenceService.getAllNoEmpty(Category.class);
-    	List<Kitchen> kitchens = referenceService.getAllNoEmpty(Kitchen.class);
+    	List<Category> categories = referenceService.getCategoriesByTypeNoEmpty(CategoryType.CATEGORY);
+    	List<Category> kitchens = referenceService.getCategoriesByTypeNoEmpty(CategoryType.KITCHEN);
     	
     	List<Menu> menus = new ArrayList<Menu>();
     	
     	Menu menu = new Menu();
     	List<MenuItem> menuItems = new ArrayList<MenuItem>();
-    	for (Reference ref : categories) {
+    	for (Category ref : categories) {
 			MenuItem menuItem = new MenuItem();
 			menuItem.setName(ref.getName());
 			menuItem.setUrl(request.getContextPath() + "/dispatcher/restaurant/find?page=1&category=" + ref.getId());
@@ -59,7 +57,7 @@ public class MenuController extends ViewPreparerSupport{
     	
     	menu = new Menu();
     	menuItems = new ArrayList<MenuItem>();
-    	for (Reference ref : kitchens) {
+    	for (Category ref : kitchens) {
 			MenuItem menuItem = new MenuItem();
 			menuItem.setName(ref.getName());
 			menuItem.setUrl(request.getContextPath() + "/dispatcher/restaurant/find?page=1&kitchens=" + ref.getId());

@@ -14,14 +14,12 @@
 					<a href="#"><c:out value="${bean.name}" /></a>
 				</h3>
 				<div>
-
 						<c:forEach items="${bean.items}" var="item">
 							<a href="${item.url}"> <c:out
 										value="${item.caption}" />
 							</a>
 							<br/>
 						</c:forEach>
-
 				</div>
 			</div>
 		</c:forEach>

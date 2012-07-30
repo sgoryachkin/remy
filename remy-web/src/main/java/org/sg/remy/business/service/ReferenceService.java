@@ -2,16 +2,17 @@ package org.sg.remy.business.service;
 
 import java.util.List;
 
-import org.sg.remy.business.entity.Reference;
+import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.CategoryType;
 
 public interface ReferenceService {
 	
-	void save(Reference category);
+	void save(Category category);
 	
-	<T extends Reference> T get(Class<T> clazz, Long id);
+	Category get(Long id);
 	
-	<T extends Reference> List<T> getAll(Class<T> clazz);
+	List<Category> getCategoriesByType(CategoryType categoryType);
 	
-	<T extends Reference> List<T> getAllNoEmpty(Class<T> clazz);
+	List<Category> getCategoriesByTypeNoEmpty(CategoryType categoryType);
 
 }
