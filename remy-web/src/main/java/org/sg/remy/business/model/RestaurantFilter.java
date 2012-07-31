@@ -1,11 +1,12 @@
 package org.sg.remy.business.model;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-public class RestaurantFilter {
+public class RestaurantFilter implements Serializable{
+	private static final long serialVersionUID = -1296668376596428590L;
 	
 	private Collection<Long> categoryIds;
-	private Collection<Long> kitchenIds;
 
 	public Collection<Long> getCategoryIds() {
 		return categoryIds;
@@ -15,12 +16,39 @@ public class RestaurantFilter {
 		this.categoryIds = categoryIds;
 	}
 
-	public Collection<Long> getKitchenIds() {
-		return kitchenIds;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((categoryIds == null) ? 0 : categoryIds.hashCode());
+		return result;
 	}
 
-	public void setKitchenIds(Collection<Long> kitchenIds) {
-		this.kitchenIds = kitchenIds;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RestaurantFilter other = (RestaurantFilter) obj;
+		if (categoryIds == null) {
+			if (other.categoryIds != null)
+				return false;
+		} else if (!categoryIds.equals(other.categoryIds))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("RestaurantFilter [categoryIds=");
+		builder.append(categoryIds);
+		builder.append("]");
+		return builder.toString();
 	}
 
 }

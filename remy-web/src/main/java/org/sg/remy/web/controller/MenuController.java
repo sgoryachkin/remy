@@ -11,6 +11,7 @@ import org.apache.tiles.AttributeContext;
 import org.apache.tiles.context.TilesRequestContext;
 import org.apache.tiles.preparer.ViewPreparerSupport;
 import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.web.model.Menu;
 import org.sg.remy.web.model.MenuItem;
@@ -31,7 +32,7 @@ public class MenuController extends ViewPreparerSupport{
     public void execute(TilesRequestContext tilesContext,
                         AttributeContext attributeContext) {
     	
-    	Map<Long, List<Category>> categoryMap = categoryService.getAllGroupNoEmpty();
+    	Map<Long, List<Category>> categoryMap = categoryService.findGroupe(new CategoryFilter(null, true, null, false));
 
     	List<Menu> menus = new ArrayList<Menu>();
     	for (Entry<Long, List<Category>> entry: categoryMap.entrySet()) {

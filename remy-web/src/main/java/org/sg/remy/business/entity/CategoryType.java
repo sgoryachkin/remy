@@ -1,5 +1,7 @@
 package org.sg.remy.business.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,16 +13,28 @@ import javax.persistence.Id;
  * 
  */
 @Entity
-public class CategoryType {
+public class CategoryType implements Serializable{
+	private static final long serialVersionUID = -4494730681388117292L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	private String name;
+	private String name; 
 
 	@Column(nullable = false)
 	private Boolean multiple;
+	
+	@Column(nullable = false)
+	private Boolean showable;
+
+	public Boolean getShowable() {
+		return showable;
+	}
+
+	public void setShowable(Boolean showable) {
+		this.showable = showable;
+	}
 
 	public Long getId() {
 		return id;

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.model.CategoryFilter;
 
 public interface CategoryService {
 	
@@ -11,16 +12,8 @@ public interface CategoryService {
 	
 	Category get(Long id);
 	
-	List<Category> getByType(Long categoryTypeId);
+	List<Category> find(CategoryFilter categoryFilter);
 	
-	List<Category> getByTypeNoEmpty(Long categoryTypeId);
+	Map<Long, List<Category>> findGroupe(CategoryFilter categoryFilter);
 	
-	List<Category> getAll();
-	
-	List<Category> getAllNoEmpty(); 
-	
-	Map<Long, List<Category>> getAllGroup();
-	
-	Map<Long, List<Category>> getAllGroupNoEmpty(); 
-
 }

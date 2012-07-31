@@ -5,8 +5,7 @@
 
 <tiles-definitions>
 
-	<definition name="menu" preparer="menuController"
-		template="/WEB-INF/jsp/menu.jsp">
+	<definition name="menu" preparer="menuController" template="/WEB-INF/jsp/menu.jsp">
 	</definition>
 
 	<definition name="layout" template="/WEB-INF/jsp/layout.jsp">
@@ -15,10 +14,9 @@
 		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
 	</definition>
 
-	<definition name="restaurant/welcome" extends="layout">
+	<definition name="misc/welcome" extends="layout">
 		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="content"
-			value="/WEB-INF/jsp/restaurant/welcome.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/misc/welcome.jsp" />
 	</definition>
 
 	<definition name="restaurant/add" extends="layout">

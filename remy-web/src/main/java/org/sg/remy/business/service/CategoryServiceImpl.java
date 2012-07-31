@@ -16,6 +16,7 @@ import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.entity.CategoryType_;
 import org.sg.remy.business.entity.Category_;
+import org.sg.remy.business.model.CategoryFilter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,49 +38,46 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> getByType(Long categoryTypeId) {
+	public List<Category> find(CategoryFilter categoryFilter) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
 		Root<Category> root = cq.from(Category.class);
-		Join<Category, CategoryType> join = root.join(Category_.categoryType);
-		cq.where(cb.equal(join.get(CategoryType_.id), categoryTypeId));
+		if (categoryFilter.getMultipleType() != null
+				|| categoryFilter.getShowableType() != null
+				|| (categoryFilter.getTypeIds() != null && !categoryFilter
+						.getTypeIds().isEmpty())) {
+			Join<Category, CategoryType> join = root
+					.join(Category_.categoryType);
+			if (categoryFilter.getShowableType() != null) {
+				cq.where(cb.equal(join.get(CategoryType_.showable),
+						categoryFilter.getShowableType()));
+			}
+			if (categoryFilter.getMultipleType() != null) {
+				cq.where(cb.equal(join.get(CategoryType_.multiple),
+						categoryFilter.getMultipleType()));
+			}
+			if (categoryFilter.getTypeIds() != null
+					&& !categoryFilter.getTypeIds().isEmpty()) {
+				cq.where(join.get(CategoryType_.id).in(
+						categoryFilter.getTypeIds()));
+
+			}
+			if (categoryFilter.getEmpty() != null) {
+				if (categoryFilter.getEmpty()) {
+					cq.where(cb.isEmpty(root.get(Category_.restaurants)));
+				} else {
+					cq.where(cb.isNotEmpty(root.get(Category_.restaurants)));
+				}
+			}
+		}
 
 		return em.createQuery(cq).getResultList();
 	}
 
 	@Override
-	public List<Category> getByTypeNoEmpty(Long categoryTypeId) {
-		return getByType(categoryTypeId);
-	}
-
-	@Override
-	public List<Category> getAll() {
-		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
-		cq.from(Category.class);
-		return em.createQuery(cq).getResultList();
-	}
-
-	@Override
-	public Map<Long, List<Category>> getAllGroup() {
-		return groupByCategoryType(getAll());
-	}
-
-	@Override
-	public Map<Long, List<Category>> getAllGroupNoEmpty() {
-		return groupByCategoryType(getAllNoEmpty());
-	}
-
-	@Override
-	public List<Category> getAllNoEmpty() {
-		// TODO Нужно реализовать
-		return getAll();
-	}
-
-	private Map<Long, List<Category>> groupByCategoryType(
-			List<Category> categories) {
+	public Map<Long, List<Category>> findGroupe(CategoryFilter categoryFilter) {
 		Map<Long, List<Category>> result = new LinkedHashMap<Long, List<Category>>();
-		for (Category category : categories) {
+		for (Category category : find(categoryFilter)) {
 			Long categpryId = category.getCategoryType().getId();
 			List<Category> group = result.get(categpryId);
 			if (group == null) {

@@ -6,7 +6,7 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
 
-	<div id="menu" style="margin-top: 5px;">
+	<div id="menu" style="margin-top: 5px; margin-bottom: 5px;">
 
 		<c:forEach items="${menus}" var="bean">
 			<div>
@@ -14,12 +14,11 @@
 					<a href="#"><c:out value="${bean.name}" /></a>
 				</h3>
 				<div>
-						<c:forEach items="${bean.items}" var="item">
-							<a href="${item.url}"> <c:out
-										value="${item.caption}" />
-							</a>
-							<br/>
-						</c:forEach>
+					<c:forEach items="${bean.items}" var="item">
+						<a href="${item.url}"> <c:out value="${item.caption}" />
+						</a>
+						<br />
+					</c:forEach>
 				</div>
 			</div>
 		</c:forEach>

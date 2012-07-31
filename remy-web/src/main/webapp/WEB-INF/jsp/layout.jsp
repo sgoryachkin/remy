@@ -84,8 +84,8 @@ ul#icons span.ui-icon {
 	$(function() {
 		$("#menu").accordion({
 			header : "h3",
-			autoHeight: false,
-			navigation: true
+			autoHeight : false,
+			navigation : true
 		});
 	});
 </script>
@@ -102,12 +102,18 @@ ul#icons span.ui-icon {
 				<tiles:insertAttribute name="menu" />
 			</div>
 			<div id="layout-content">
-				<tiles:insertAttribute name="content" />
+				<div style="margin: 5px; padding: 5px;"
+					class="ui-widget ui-widget-content ui-corner-all">
+					<tiles:insertAttribute name="content" />
+				</div>
 			</div>
 			<div id="layout-right">Right</div>
 		</div>
 		<div id="layout-footer">
-			<tiles:insertAttribute name="footer" />
+			<div style="margin-top: 5px; padding: 5px;"
+				class="ui-widget ui-widget-content ui-corner-all">
+				<tiles:insertAttribute name="footer" />
+			</div>
 		</div>
 	</div>
 </jsp:body>

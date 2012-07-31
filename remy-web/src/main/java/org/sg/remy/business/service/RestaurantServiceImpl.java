@@ -9,10 +9,8 @@ import javax.persistence.criteria.Root;
 
 import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.Category_;
-import org.sg.remy.business.entity.Restaurant_;
-
 import org.sg.remy.business.entity.Restaurant;
-
+import org.sg.remy.business.entity.Restaurant_;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.PagingResultImpl;
@@ -30,7 +28,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 	@Override
 	public Restaurant get(Long id) {
-		return em.find(Restaurant.class, id);
+		Restaurant restaurant = em.find(Restaurant.class, id);
+		restaurant.getCategories().size();
+		return restaurant;
 	}
 
 	@Override

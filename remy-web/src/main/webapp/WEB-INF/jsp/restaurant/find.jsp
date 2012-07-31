@@ -4,17 +4,16 @@
 	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.1">
 
-	<div style="margin: 5px; padding: 5px;"
-		class="ui-widget ui-widget-content ui-corner-all">
-		<c:forEach items="${pagingResult.result}" var="bean">
 
-			<a href="/view/all/product/show?id=${bean.id}"><c:out
-					value="${bean.name}" /></a>
+	<c:forEach items="${pagingResult.result}" var="bean">
 
-			<p>
-				<c:out value="${bean.description}" />
-			</p>
+		<a href="${pageContext.request.contextPath}/dispatcher/restaurant/show?id=${bean.id}"><c:out
+				value="${bean.name}" /></a>
 
-		</c:forEach>
-	</div>
+		<p>
+			<c:out value="${bean.description}" />
+		</p>
+
+	</c:forEach>
+
 </jsp:root>

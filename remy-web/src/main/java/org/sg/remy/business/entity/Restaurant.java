@@ -21,7 +21,7 @@ public class Restaurant {
 	@Lob
 	private String description;
 
-	@ManyToMany
+	@ManyToMany(targetEntity=Category.class)
 	private List<Category> categories;
 
 	public List<Category> getCategories() {

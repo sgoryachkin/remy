@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.entity.Restaurant;
+import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.business.service.CategoryTypeService;
 import org.sg.remy.business.service.RestaurantService;
@@ -37,21 +38,25 @@ public class InitDBComponent {
 		CategoryType categoryType = new CategoryType();
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Кухня");
 		categoryType.setMultiple(true);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Средний чек");
 		categoryType.setMultiple(false);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Услуги");
 		categoryType.setMultiple(true);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 	}
@@ -160,9 +165,9 @@ public class InitDBComponent {
 	
 
 	public void initRestaurant(){
-		List<Category> categories = referenceService.getAll();
+		List<Category> categories = referenceService.find(new CategoryFilter());
 		
-		for (int i = 0; i < 251; i++) {
+		for (int i = 0; i < 151; i++) {
 			Restaurant r = new Restaurant();
 			r.setCategories(categories);
 			r.setName("Заведение " + i);

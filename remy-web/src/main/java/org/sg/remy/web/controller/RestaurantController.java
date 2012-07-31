@@ -26,7 +26,7 @@ public class RestaurantController {
 
 	public static final String MAPPING_ADD = "add";
 	public static final String MAPPING_LIST = "find";
-	public static final String MAPPING_SHOW = "welcome";
+	public static final String MAPPING_SHOW = "show";
 
 	@RequestMapping(value = MAPPING_LIST, method = RequestMethod.GET)
 	public PagingResult<Restaurant> find(
@@ -41,11 +41,9 @@ public class RestaurantController {
 		return restaurantService.find(param);
 	}
 
-	// @RequestMapping(value = MAPPING_SHOW, method = RequestMethod.GET)
-	@RequestMapping
-	public Restaurant show(@RequestParam("id") String id) {
-		LOG.info("dd");
-		return null;
+	@RequestMapping(value = MAPPING_SHOW, method = RequestMethod.GET)
+	public Restaurant show(@RequestParam Long id) {
+		return restaurantService.get(id);
 	}
 
 	@RequestMapping(value = MAPPING_ADD, method = RequestMethod.POST)

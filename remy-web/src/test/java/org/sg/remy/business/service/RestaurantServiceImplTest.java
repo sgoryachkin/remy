@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.entity.Restaurant;
+import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.RestaurantFilter;
@@ -45,20 +46,24 @@ public class RestaurantServiceImplTest {
 		CategoryType categoryType = new CategoryType();
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Кухня");
 		categoryType.setMultiple(true);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Средний чек");
 		categoryType.setMultiple(false);
+		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Услуги");
+		categoryType.setShowable(true);
 		categoryType.setMultiple(true);
 		categoryTypeService.save(categoryType);
 		
@@ -168,7 +173,7 @@ public class RestaurantServiceImplTest {
 	
 
 	public void initRestaurant(){
-		List<Category> categories = referenceService.getAll();
+		List<Category> categories = referenceService.find(new CategoryFilter());
 		
 		for (int i = 0; i < 251; i++) {
 			Restaurant r = new Restaurant();
@@ -187,7 +192,7 @@ public class RestaurantServiceImplTest {
 	public void findByCategorySuccess(){
 		
 		Long pageSize = 7l;
-		List<Category> categories = referenceService.getAll();
+		List<Category> categories = referenceService.find(new CategoryFilter());
 		List<Long> categoryIds = new ArrayList<Long>();
 		for (Category category : categories) {
 			categoryIds.add(category.getId());
