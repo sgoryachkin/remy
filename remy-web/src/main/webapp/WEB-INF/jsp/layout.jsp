@@ -83,7 +83,9 @@ ul#icons span.ui-icon {
 <script type="text/javascript">
 	$(function() {
 		$("#menu").accordion({
-			header : "h3"
+			header : "h3",
+			autoHeight: false,
+			navigation: true
 		});
 	});
 </script>

@@ -2,7 +2,7 @@
 
 #layout-container {
   	margin:auto;
-  	width: 1000px; 
+  	width: 1024px; 
   	background: #ffffff;
 }
 
@@ -13,7 +13,7 @@
 
 #layout-left {
 	float: left;
-	width: 150px;
+	width: 174px;
 	height:100%;
 }
 

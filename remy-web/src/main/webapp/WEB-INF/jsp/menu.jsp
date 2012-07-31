@@ -6,7 +6,7 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
 
-	<div id="menu">
+	<div id="menu" style="margin-top: 5px;">
 
 		<c:forEach items="${menus}" var="bean">
 			<div>
