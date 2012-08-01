@@ -1,13 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.sg.remy</groupId>
-  <version>1.0.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <description>Remy parent pom module</description>
-  
-  <modules>
-  	<module>remy-web</module>
-  </modules>
-  
-  <artifactId>remy</artifactId>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sg.remy</groupId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<description>Remy parent pom module</description>
+
+	<repositories>
+		<repository>
+			<id>burtsev-net-maven</id>
+			<name>Burtsev.Net Maven Repository</name>
+			<url>http://maven.burtsev.net</url>
+		</repository>
+	</repositories>
+
+	<modules>
+		<module>remy-web</module>
+	</modules>
+
+	<artifactId>remy</artifactId>
 </project>
