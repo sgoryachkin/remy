@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.sg.remy.business.entity.Albom;
 import org.sg.remy.business.entity.Category;
 import org.sg.remy.business.entity.CategoryType;
 import org.sg.remy.business.entity.Restaurant;
@@ -173,6 +174,10 @@ public class InitDBComponent {
 			r.setName("Заведение " + i);
 			r.setDescription("Описание для заведения");
 			r.setCategories(categories);
+			Albom albom = new Albom();
+			albom.setAlbomId("5771783291887167073");
+			albom.setUserId("artful.tiger");
+			r.setGallery(albom);
 			restaurantService.save(r);
 			
 		}

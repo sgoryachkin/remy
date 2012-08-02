@@ -15,7 +15,7 @@ public class ImageServiceImpl implements ImageService{
 		PicasawebService picaseService = new PicasawebService("exampleCo-exampleApp-1");
 		
 		try {
-			picaseService.setUserCredentials("artful.tiger@gmail.com", "gBarbadosl");
+			picaseService.setUserCredentials("artful.tiger@gmail.com", "");
 			URL albumPostUrl = new URL("https://picasaweb.google.com/data/feed/api/user/artful.tiger/albumid/5771783291887167073");
 			MediaSource myMedia = new MediaStreamSource(is, "image/jpeg");
 			PhotoEntry returnedPhoto = picaseService.insert(albumPostUrl, PhotoEntry.class, myMedia);

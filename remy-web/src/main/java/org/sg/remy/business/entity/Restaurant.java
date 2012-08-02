@@ -2,6 +2,7 @@ package org.sg.remy.business.entity;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,9 @@ public class Restaurant {
 
 	@Lob
 	private String description;
+	
+	@Embedded
+	private Albom gallery;
 
 	@ManyToMany(targetEntity=Category.class)
 	private List<Category> categories;
@@ -54,6 +58,14 @@ public class Restaurant {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Albom getGallery() {
+		return gallery;
+	}
+
+	public void setGallery(Albom gallery) {
+		this.gallery = gallery;
 	}
 
 }
