@@ -17,13 +17,44 @@
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/nivo-slider/themes/default/default.css"
+	type="text/css" media="screen" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/nivo-slider/themes/light/light.css"
+	type="text/css" media="screen" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/nivo-slider/themes/dark/dark.css"
+	type="text/css" media="screen" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/nivo-slider/themes/bar/bar.css"
+	type="text/css" media="screen" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/nivo-slider/nivo-slider.css"
+	type="text/css" media="screen" />
 <link type="text/css"
 	href="${pageContext.request.contextPath}/resources/jquery/css/dark-hive/jquery-ui-1.8.21.custom.css"
 	rel="stylesheet" />
-
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/style/layout.css"
 	type="text/css" />
+
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js">
+	;
+</script>
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js">
+	;
+</script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/nivo-slider/jquery.nivo.slider.js">
+	;
+</script>
+
+
 
 <style type="text/css">
 /*demo page css*/
@@ -70,15 +101,7 @@ ul#icons span.ui-icon {
 }
 </style>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js">
-	;
-</script>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js">
-	;
-</script>
 
 <script type="text/javascript">
 	$(function() {
