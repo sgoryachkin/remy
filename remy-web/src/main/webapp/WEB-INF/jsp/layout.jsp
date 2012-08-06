@@ -53,6 +53,10 @@
 	src="${pageContext.request.contextPath}/resources/nivo-slider/jquery.nivo.slider.js">
 	;
 </script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/helper.js">
+	;
+</script>
 
 
 
