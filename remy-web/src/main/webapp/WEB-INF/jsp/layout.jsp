@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.1">
-	<jsp:directive.page language="java"
-		contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" />
-	<jsp:text>
-		<![CDATA[ <?xml version="1.0" encoding="UTF-8" ?> ]]>
-	</jsp:text>
-	<jsp:text>
-		<![CDATA[ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> ]]>
-	</jsp:text>
-	<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type"
-	content="application/xhtml+xml; charset=UTF-8" />
 
+	<jsp:directive.page language="java" contentType="application/xhtml+xml"
+		pageEncoding="utf-8" />
+	<jsp:output doctype-root-element="html"
+		doctype-public="-//W3C//DTD XHTML 1.1//EN"
+		doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+		omit-xml-declaration="true" />
+
+	<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
@@ -41,18 +40,15 @@
 
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js">
-	;
-</script>
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js" />
+
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js">
-	;
-</script>
+	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js" />
+
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/nivo-slider/jquery.nivo.slider.js">
-	;
-</script>
+	src="${pageContext.request.contextPath}/resources/nivo-slider/jquery.nivo.slider.js" />
+
 
 
 
@@ -139,6 +135,7 @@ ul#icons span.ui-icon {
 			</div>
 		</div>
 	</div>
+	
 </jsp:body>
 	</html>
 </jsp:root>
