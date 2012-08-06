@@ -13,6 +13,9 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+<meta http-equiv="Content-Type"
+	content="application/xhtml+xml; charset=utf-8" />
+
 
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
@@ -35,7 +38,7 @@
 	href="${pageContext.request.contextPath}/resources/jquery/css/dark-hive/jquery-ui-1.8.21.custom.css"
 	rel="stylesheet" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/style/layout.css"
+	href="${pageContext.request.contextPath}/resources/remy/css/layout.css"
 	type="text/css" />
 
 
@@ -50,9 +53,8 @@
 	src="${pageContext.request.contextPath}/resources/nivo-slider/jquery.nivo.slider.js" />
 
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/helper.js">
-	;
-</script>
+	src="${pageContext.request.contextPath}/resources/remy/js/helper.js" />
+
 
 
 
@@ -103,18 +105,10 @@ ul#icons span.ui-icon {
 
 
 
-<script type="text/javascript">
-	$(function() {
-		$("#menu").accordion({
-			header : "h3",
-			autoHeight : false,
-			navigation : true
-		});
-	});
-</script>
+
 
 </head>
-<jsp:body>
+<body>
 
 	<div id="layout-container">
 		<div id="layout-header">
@@ -139,6 +133,6 @@ ul#icons span.ui-icon {
 			</div>
 		</div>
 	</div>
-</jsp:body>
+</body>
 	</html>
 </jsp:root>

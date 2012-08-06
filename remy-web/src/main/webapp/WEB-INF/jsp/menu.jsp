@@ -5,8 +5,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
-
-	<div id="menu" style="margin-top: 5px; margin-bottom: 5px;">
+	<div id="menu_category" style="margin-top: 5px; margin-bottom: 5px;">
 
 		<c:forEach items="${menus}" var="bean">
 			<div>
@@ -25,5 +24,7 @@
 
 	</div>
 
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/remy/js/category.js" />
 
 </jsp:root>
