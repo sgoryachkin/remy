@@ -4,7 +4,7 @@
 <Configure class="org.mortbay.jetty.webapp.WebAppContext">
 
 	<New id="ds" class="org.mortbay.jetty.plus.naming.Resource">
-		<Arg>java:jboss/datasources/MysqlDS</Arg>
+		<Arg>java:jboss/datasources/PostgreSQLDS</Arg>
 		<Arg>
 			<New class="org.apache.commons.dbcp.BasicDataSource">
 				<Set name="driverClassName">org.hsqldb.jdbc.JDBCDriver</Set>
