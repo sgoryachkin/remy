@@ -22,6 +22,7 @@ var picasa = function(userId, albomId, photolistener) {
 				photolistener(photoUrl, photoTitle, photoThumb)
 			});
 		},
+		crossDomain: true,
 		dataType : 'json',
 		async : false,
 	});
