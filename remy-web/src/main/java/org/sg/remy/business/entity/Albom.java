@@ -1,11 +1,13 @@
 package org.sg.remy.business.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
 
 
 @Embeddable
-public class Albom {
+public class Albom implements Serializable {
+	private static final long serialVersionUID = 4674953180141177295L;
 	
 	String albomId;
 	String userId;

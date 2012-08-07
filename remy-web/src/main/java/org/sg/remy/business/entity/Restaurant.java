@@ -1,5 +1,6 @@
 package org.sg.remy.business.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -11,7 +12,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Restaurant {
+public class Restaurant implements Serializable{
+	private static final long serialVersionUID = 8126340023455157654L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
