@@ -97,7 +97,7 @@
                     </security>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/MysqlDS" enabled="${mysql.enabled}" use-java-context="true" pool-name="MysqlDS">
-                    <connection-url>jdbc:mysql://${env.OPENSHIFT_DB_HOST}:${env.OPENSHIFT_DB_PORT}/${env.OPENSHIFT_APP_NAME}</connection-url>
+                    <connection-url>jdbc:mysql://${env.OPENSHIFT_DB_HOST}:${env.OPENSHIFT_DB_PORT}/${env.OPENSHIFT_APP_NAME}?useUnicode=yes&amp;characterEncoding=utf-8</connection-url>
                     <driver>mysql</driver>
                     <security>
                       <user-name>${env.OPENSHIFT_DB_USERNAME}</user-name>
