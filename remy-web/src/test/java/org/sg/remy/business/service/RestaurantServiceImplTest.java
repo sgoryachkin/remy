@@ -15,6 +15,8 @@ import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.RestaurantFilter;
+import org.sg.remy.business.service.action.Save;
+import org.sg.remy.common.command.api.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -23,6 +25,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:test-context.xml")
 public class RestaurantServiceImplTest {
+	
+	@Autowired
+	ActionService commandService;
 	
 	@Autowired
 	RestaurantService restaurantService;
@@ -47,7 +52,7 @@ public class RestaurantServiceImplTest {
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
 		categoryType.setShowable(true);
-		categoryTypeService.save(categoryType);
+		commandService.doAction(new Save(categoryType));
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Кухня");

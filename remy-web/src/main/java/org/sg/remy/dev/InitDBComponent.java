@@ -13,11 +13,16 @@ import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.business.service.CategoryTypeService;
 import org.sg.remy.business.service.RestaurantService;
+import org.sg.remy.business.service.action.Save;
+import org.sg.remy.common.command.api.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class InitDBComponent {
+	
+	@Autowired
+	ActionService commandService;
 	
 	@Autowired
 	CategoryTypeService categoryTypeService;
@@ -40,7 +45,7 @@ public class InitDBComponent {
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
 		categoryType.setShowable(true);
-		categoryTypeService.save(categoryType);
+		commandService.doAction(new Save(categoryType));
 		
 		categoryType = new CategoryType();
 		categoryType.setName("Кухня");
