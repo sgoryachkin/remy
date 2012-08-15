@@ -12,10 +12,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
-import org.sg.remy.business.entity.Category;
-import org.sg.remy.business.entity.CategoryType;
-import org.sg.remy.business.entity.CategoryType_;
-import org.sg.remy.business.entity.Category_;
+import org.sg.remy.business.entity.ProductCategory;
+import org.sg.remy.business.entity.ProductCategoryGroup;
+import org.sg.remy.business.entity.ProductCategoryGroup_;
+import org.sg.remy.business.entity.ProductCategory_;
 import org.sg.remy.business.model.CategoryFilter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,45 +28,47 @@ public class CategoryServiceImpl implements CategoryService {
 	private EntityManager em;
 
 	@Override
-	public void save(Category category) {
+	public void save(ProductCategory category) {
 		em.persist(category);
 	}
 
 	@Override
-	public Category get(Long id) {
-		return em.find(Category.class, id);
+	public ProductCategory get(Long id) {
+		return em.find(ProductCategory.class, id);
 	}
 
 	@Override
-	public List<Category> find(CategoryFilter categoryFilter) {
+	public List<ProductCategory> find(CategoryFilter categoryFilter) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<Category> cq = cb.createQuery(Category.class);
-		Root<Category> root = cq.from(Category.class);
+		CriteriaQuery<ProductCategory> cq = cb
+				.createQuery(ProductCategory.class);
+		Root<ProductCategory> root = cq.from(ProductCategory.class);
 		if (categoryFilter.getMultipleType() != null
 				|| categoryFilter.getShowableType() != null
 				|| (categoryFilter.getTypeIds() != null && !categoryFilter
 						.getTypeIds().isEmpty())) {
-			Join<Category, CategoryType> join = root
-					.join(Category_.categoryType);
+			Join<ProductCategory, ProductCategoryGroup> join = root
+					.join(ProductCategory_.categoryType);
 			if (categoryFilter.getShowableType() != null) {
-				cq.where(cb.equal(join.get(CategoryType_.showable),
+				cq.where(cb.equal(join.get(ProductCategoryGroup_.showable),
 						categoryFilter.getShowableType()));
 			}
 			if (categoryFilter.getMultipleType() != null) {
-				cq.where(cb.equal(join.get(CategoryType_.multiple),
+				cq.where(cb.equal(join.get(ProductCategoryGroup_.multiple),
 						categoryFilter.getMultipleType()));
 			}
 			if (categoryFilter.getTypeIds() != null
 					&& !categoryFilter.getTypeIds().isEmpty()) {
-				cq.where(join.get(CategoryType_.id).in(
+				cq.where(join.get(ProductCategoryGroup_.id).in(
 						categoryFilter.getTypeIds()));
 
 			}
 			if (categoryFilter.getEmpty() != null) {
 				if (categoryFilter.getEmpty()) {
-					cq.where(cb.isEmpty(root.get(Category_.restaurants)));
+					cq.where(cb.isEmpty(root.get(ProductCategory_.restaurants)));
 				} else {
-					cq.where(cb.isNotEmpty(root.get(Category_.restaurants)));
+					cq.where(cb.isNotEmpty(root
+							.get(ProductCategory_.restaurants)));
 				}
 			}
 		}
@@ -75,13 +77,14 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Map<Long, List<Category>> findGroupe(CategoryFilter categoryFilter) {
-		Map<Long, List<Category>> result = new LinkedHashMap<Long, List<Category>>();
-		for (Category category : find(categoryFilter)) {
-			Long categpryId = category.getCategoryType().getId();
-			List<Category> group = result.get(categpryId);
+	public Map<Long, List<ProductCategory>> findGroupe(
+			CategoryFilter categoryFilter) {
+		Map<Long, List<ProductCategory>> result = new LinkedHashMap<Long, List<ProductCategory>>();
+		for (ProductCategory category : find(categoryFilter)) {
+			Long categpryId = category.getProductCategoryGroup().getId();
+			List<ProductCategory> group = result.get(categpryId);
 			if (group == null) {
-				group = new ArrayList<Category>();
+				group = new ArrayList<ProductCategory>();
 				result.put(categpryId, group);
 			}
 			group.add(category);

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.context.TilesRequestContext;
 import org.apache.tiles.preparer.ViewPreparerSupport;
-import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.web.model.Menu;
@@ -32,21 +32,21 @@ public class MenuController extends ViewPreparerSupport{
     public void execute(TilesRequestContext tilesContext,
                         AttributeContext attributeContext) {
     	
-    	Map<Long, List<Category>> categoryMap = categoryService.findGroupe(new CategoryFilter(null, true, null, false));
+    	Map<Long, List<ProductCategory>> categoryMap = categoryService.findGroupe(new CategoryFilter(null, true, null, false));
 
     	List<Menu> menus = new ArrayList<Menu>();
-    	for (Entry<Long, List<Category>> entry: categoryMap.entrySet()) {
-    		List<Category> categories = entry.getValue();
+    	for (Entry<Long, List<ProductCategory>> entry: categoryMap.entrySet()) {
+    		List<ProductCategory> categories = entry.getValue();
     		
         	Menu menu = new Menu();
         	List<MenuItem> menuItems = new ArrayList<MenuItem>();
-        	for (Category ref : categories) {
+        	for (ProductCategory ref : categories) {
     			MenuItem menuItem = new MenuItem();
     			menuItem.setName(ref.getName());
     			menuItem.setUrl(request.getContextPath() + "/dispatcher/restaurant/find?page=1&amp;category=" + ref.getId());
     			menuItems.add(menuItem);
     		}
-        	menu.setName(entry.getValue().iterator().next().getCategoryType().getName());
+        	menu.setName(entry.getValue().iterator().next().getProductCategoryGroup().getName());
         	menu.setItems(menuItems);
         	menus.add(menu);
 			

@@ -6,9 +6,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.sg.remy.business.entity.Albom;
-import org.sg.remy.business.entity.Category;
-import org.sg.remy.business.entity.CategoryType;
-import org.sg.remy.business.entity.Restaurant;
+import org.sg.remy.business.entity.ProductCategory;
+import org.sg.remy.business.entity.ProductCategoryGroup;
+import org.sg.remy.business.entity.Product;
 import org.sg.remy.business.model.CategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.business.service.CategoryTypeService;
@@ -41,25 +41,25 @@ public class InitDBComponent {
 	}
 	
 	public void initCategoryType(){
-		CategoryType categoryType = new CategoryType();
+		ProductCategoryGroup categoryType = new ProductCategoryGroup();
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
 		categoryType.setShowable(true);
 		commandService.doAction(new Save(categoryType));
 		
-		categoryType = new CategoryType();
+		categoryType = new ProductCategoryGroup();
 		categoryType.setName("Кухня");
 		categoryType.setMultiple(true);
 		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
-		categoryType = new CategoryType();
+		categoryType = new ProductCategoryGroup();
 		categoryType.setName("Средний чек");
 		categoryType.setMultiple(false);
 		categoryType.setShowable(true);
 		categoryTypeService.save(categoryType);
 		
-		categoryType = new CategoryType();
+		categoryType = new ProductCategoryGroup();
 		categoryType.setName("Услуги");
 		categoryType.setMultiple(true);
 		categoryType.setShowable(true);
@@ -69,48 +69,48 @@ public class InitDBComponent {
 	
 	public void initCategory(){
 		
-		List<CategoryType> categoryTypes = categoryTypeService.getAll();
+		List<ProductCategoryGroup> categoryTypes = categoryTypeService.getAll();
 		
-		Iterator<CategoryType> cti = categoryTypes.iterator();
-		CategoryType categoryType = cti.next();
+		Iterator<ProductCategoryGroup> cti = categoryTypes.iterator();
+		ProductCategoryGroup categoryType = cti.next();
 		
-		Category category1 = new Category();
+		ProductCategory category1 = new ProductCategory();
 		category1.setName("Бары");
-		category1.setCategoryType(categoryType);
+		category1.setProductCategoryGroup(categoryType);
 		
-		Category category2 = new Category();
+		ProductCategory category2 = new ProductCategory();
 		category2.setName("Кафе");
-		category2.setCategoryType(categoryType);
+		category2.setProductCategoryGroup(categoryType);
 		
-		Category category3 = new Category();
+		ProductCategory category3 = new ProductCategory();
 		category3.setName("Доставка");
-		category3.setCategoryType(categoryType);
+		category3.setProductCategoryGroup(categoryType);
 		
-		Category category4 = new Category();
+		ProductCategory category4 = new ProductCategory();
 		category4.setName("Заведения 18+");
-		category4.setCategoryType(categoryType);
+		category4.setProductCategoryGroup(categoryType);
 		
-		Category category5 = new Category();
+		ProductCategory category5 = new ProductCategory();
 		category5.setName("Рестораны");
-		category5.setCategoryType(categoryType);
+		category5.setProductCategoryGroup(categoryType);
 		
-		Category category6 = new Category();
+		ProductCategory category6 = new ProductCategory();
 		category6.setName("Fast Food");
-		category6.setCategoryType(categoryType);
+		category6.setProductCategoryGroup(categoryType);
 		
-		Category category7 = new Category();
+		ProductCategory category7 = new ProductCategory();
 		category7.setName("Клубы");
-		category7.setCategoryType(categoryType);
+		category7.setProductCategoryGroup(categoryType);
 		
 		categoryType = cti.next();
 		
-		Category category8 = new Category();
+		ProductCategory category8 = new ProductCategory();
 		category8.setName("Японская");
-		category8.setCategoryType(categoryType);
+		category8.setProductCategoryGroup(categoryType);
 		
-		Category category9 = new Category();
+		ProductCategory category9 = new ProductCategory();
 		category9.setName("Корейская");
-		category9.setCategoryType(categoryType);
+		category9.setProductCategoryGroup(categoryType);
 		
 		referenceService.save(category1);
 		referenceService.save(category2);
@@ -124,46 +124,46 @@ public class InitDBComponent {
 		
 		categoryType = cti.next();
 		
-		Category category = new Category();
+		ProductCategory category = new ProductCategory();
 		category.setName("Дорого");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Средне");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Дешево");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
 		categoryType = cti.next();
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Караоке");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Живая музыка");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Летняя площадка");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Детские программы");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 		
-		category = new Category();
+		category = new ProductCategory();
 		category.setName("Выездное обслуживание");
-		category.setCategoryType(categoryType);
+		category.setProductCategoryGroup(categoryType);
 		referenceService.save(category);
 				
 		
@@ -171,10 +171,10 @@ public class InitDBComponent {
 	
 
 	public void initRestaurant(){
-		List<Category> categories = referenceService.find(new CategoryFilter());
+		List<ProductCategory> categories = referenceService.find(new CategoryFilter());
 		
 		for (int i = 0; i < 151; i++) {
-			Restaurant r = new Restaurant();
+			Product r = new Product();
 			r.setCategories(categories);
 			r.setName("Заведение " + i);
 			r.setDescription("Описание для заведения");

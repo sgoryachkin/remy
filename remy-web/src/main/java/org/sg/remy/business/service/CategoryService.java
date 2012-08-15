@@ -3,17 +3,19 @@ package org.sg.remy.business.service;
 import java.util.List;
 import java.util.Map;
 
-import org.sg.remy.business.entity.Category;
+import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.model.CategoryFilter;
 
+@Deprecated
 public interface CategoryService {
 	
-	void save(Category category);
+	@Deprecated
+	void save(ProductCategory category);
 	
-	Category get(Long id);
+	ProductCategory get(Long id);
 	
-	List<Category> find(CategoryFilter categoryFilter);
+	List<ProductCategory> find(CategoryFilter categoryFilter);
 	
-	Map<Long, List<Category>> findGroupe(CategoryFilter categoryFilter);
+	Map<Long, List<ProductCategory>> findGroupe(CategoryFilter categoryFilter);
 	
 }

@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
-import org.sg.remy.business.entity.CategoryType;
+import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,26 +18,26 @@ public class CategoryTypeServiceImpl implements CategoryTypeService{
 	private EntityManager em;
 
 	@Override
-	public void save(CategoryType categoryType) {
+	public void save(ProductCategoryGroup categoryType) {
 		em.persist(categoryType);
 	}
 
 	@Override
-	public List<CategoryType> getAll() {
-		CriteriaQuery<CategoryType> cq = em.getCriteriaBuilder().createQuery(CategoryType.class);
-		cq.from(CategoryType.class);
+	public List<ProductCategoryGroup> getAll() {
+		CriteriaQuery<ProductCategoryGroup> cq = em.getCriteriaBuilder().createQuery(ProductCategoryGroup.class);
+		cq.from(ProductCategoryGroup.class);
 		return em.createQuery(cq).getResultList();
 	}
 
 	@Override
-	public List<CategoryType> getAllNoEmpty() {
+	public List<ProductCategoryGroup> getAllNoEmpty() {
 		// TODO Необходимо реализовать выборку не пустых типов категорий
 		return getAll();
 	}
 
 	@Override
-	public CategoryType get(Long id) {
-		return em.find(CategoryType.class, id);
+	public ProductCategoryGroup get(Long id) {
+		return em.find(ProductCategoryGroup.class, id);
 	}
 
 }

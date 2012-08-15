@@ -42,7 +42,15 @@ public class Save implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		return new EqualsBuilder().append(objects, obj).isEquals();
+		if (obj == null)
+			return false;
+		if (obj == this)
+			return true;
+		if (obj.getClass() != getClass())
+			return false;
+
+		Save rhs = (Save) obj;
+		return new EqualsBuilder().append(objects, rhs.objects).isEquals();
 	}
 
 	@Override

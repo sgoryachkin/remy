@@ -2,16 +2,17 @@ package org.sg.remy.business.service;
 
 import java.util.List;
 
-import org.sg.remy.business.entity.CategoryType;
+import org.sg.remy.business.entity.ProductCategoryGroup;
 
+@Deprecated
 public interface CategoryTypeService {
 	
-	void save(CategoryType categoryType);
+	void save(ProductCategoryGroup categoryType);
 	
-	CategoryType get(Long id);
+	ProductCategoryGroup get(Long id);
 	
-	List<CategoryType> getAll();
+	List<ProductCategoryGroup> getAll();
 	
-	List<CategoryType> getAllNoEmpty();
+	List<ProductCategoryGroup> getAllNoEmpty();
 
 }

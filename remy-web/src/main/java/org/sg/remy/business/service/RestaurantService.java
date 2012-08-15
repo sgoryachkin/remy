@@ -1,14 +1,15 @@
 package org.sg.remy.business.service;
 
-import org.sg.remy.business.entity.Restaurant;
+import org.sg.remy.business.entity.Product;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
-import org.sg.remy.business.model.RestaurantFilter;
+import org.sg.remy.business.model.ProductFilter;
 
+@Deprecated
 public interface RestaurantService {
 	
-	Restaurant get(Long id);
-	void save(Restaurant restaurant);
-	PagingResult<Restaurant> find(PagingParam<RestaurantFilter> param);
+	Product get(Long id);
+	@Deprecated
+	void save(Product restaurant);
 	
 }

@@ -3,7 +3,7 @@ package org.sg.remy.business.model;
 import java.io.Serializable;
 import java.util.Collection;
 
-public class RestaurantFilter implements Serializable{
+public class ProductFilter implements Serializable{
 	private static final long serialVersionUID = -1296668376596428590L;
 	
 	private Collection<Long> categoryIds;
@@ -33,7 +33,7 @@ public class RestaurantFilter implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RestaurantFilter other = (RestaurantFilter) obj;
+		ProductFilter other = (ProductFilter) obj;
 		if (categoryIds == null) {
 			if (other.categoryIds != null)
 				return false;
