@@ -11,8 +11,9 @@ import org.apache.tiles.AttributeContext;
 import org.apache.tiles.context.TilesRequestContext;
 import org.apache.tiles.preparer.ViewPreparerSupport;
 import org.sg.remy.business.entity.ProductCategory;
-import org.sg.remy.business.model.CategoryFilter;
-import org.sg.remy.business.service.CategoryService;
+import org.sg.remy.business.model.ProductCategoryFilter;
+import org.sg.remy.business.service.action.FindProductCategory;
+import org.sg.remy.common.command.api.ActionService;
 import org.sg.remy.web.model.Menu;
 import org.sg.remy.web.model.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.stereotype.Controller;
 public class MenuController extends ViewPreparerSupport{
 	
 	@Autowired
-	private CategoryService categoryService;
+	private ActionService actionService;
 	
 	@Autowired
 	private HttpServletRequest request;
@@ -32,7 +33,7 @@ public class MenuController extends ViewPreparerSupport{
     public void execute(TilesRequestContext tilesContext,
                         AttributeContext attributeContext) {
     	
-    	Map<Long, List<ProductCategory>> categoryMap = categoryService.findGroupe(new CategoryFilter(null, true, null, false));
+    	Map<Long, List<ProductCategory>> categoryMap = actionService.doAction(new FindProductCategory(new ProductCategoryFilter(null, true, null)));
 
     	List<Menu> menus = new ArrayList<Menu>();
     	for (Entry<Long, List<ProductCategory>> entry: categoryMap.entrySet()) {

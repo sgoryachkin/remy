@@ -11,7 +11,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 
 @Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Listable extends AbstractEntity implements Serializable{
 	private static final long serialVersionUID = -7163590531646409878L;
 

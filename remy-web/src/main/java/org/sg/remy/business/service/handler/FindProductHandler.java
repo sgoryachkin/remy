@@ -21,7 +21,7 @@ import org.sg.remy.common.command.api.ActionHandler;
 import org.sg.remy.common.command.api.Handler;
 
 @Handler(action = FindProduct.class)
-public class FindProductAction implements ActionHandler<FindProduct, PagingResult<Product>>{
+public class FindProductHandler implements ActionHandler<FindProduct, PagingResult<Product>>{
 	
 	@PersistenceContext
 	EntityManager em;

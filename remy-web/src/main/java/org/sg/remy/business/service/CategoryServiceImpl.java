@@ -16,7 +16,7 @@ import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.sg.remy.business.entity.ProductCategoryGroup_;
 import org.sg.remy.business.entity.ProductCategory_;
-import org.sg.remy.business.model.CategoryFilter;
+import org.sg.remy.business.model.ProductCategoryFilter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,24 +38,19 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<ProductCategory> find(CategoryFilter categoryFilter) {
+	public List<ProductCategory> find(ProductCategoryFilter categoryFilter) {
 		CriteriaBuilder cb = em.getCriteriaBuilder();
 		CriteriaQuery<ProductCategory> cq = cb
 				.createQuery(ProductCategory.class);
 		Root<ProductCategory> root = cq.from(ProductCategory.class);
-		if (categoryFilter.getMultipleType() != null
-				|| categoryFilter.getShowableType() != null
+		if (categoryFilter.getShowableType() != null
 				|| (categoryFilter.getTypeIds() != null && !categoryFilter
 						.getTypeIds().isEmpty())) {
 			Join<ProductCategory, ProductCategoryGroup> join = root
-					.join(ProductCategory_.categoryType);
+					.join(ProductCategory_.productCategoryGroup);
 			if (categoryFilter.getShowableType() != null) {
 				cq.where(cb.equal(join.get(ProductCategoryGroup_.showable),
 						categoryFilter.getShowableType()));
-			}
-			if (categoryFilter.getMultipleType() != null) {
-				cq.where(cb.equal(join.get(ProductCategoryGroup_.multiple),
-						categoryFilter.getMultipleType()));
 			}
 			if (categoryFilter.getTypeIds() != null
 					&& !categoryFilter.getTypeIds().isEmpty()) {
@@ -63,6 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
 						categoryFilter.getTypeIds()));
 
 			}
+			/*
 			if (categoryFilter.getEmpty() != null) {
 				if (categoryFilter.getEmpty()) {
 					cq.where(cb.isEmpty(root.get(ProductCategory_.restaurants)));
@@ -71,25 +67,10 @@ public class CategoryServiceImpl implements CategoryService {
 							.get(ProductCategory_.restaurants)));
 				}
 			}
+			*/
 		}
 
 		return em.createQuery(cq).getResultList();
-	}
-
-	@Override
-	public Map<Long, List<ProductCategory>> findGroupe(
-			CategoryFilter categoryFilter) {
-		Map<Long, List<ProductCategory>> result = new LinkedHashMap<Long, List<ProductCategory>>();
-		for (ProductCategory category : find(categoryFilter)) {
-			Long categpryId = category.getProductCategoryGroup().getId();
-			List<ProductCategory> group = result.get(categpryId);
-			if (group == null) {
-				group = new ArrayList<ProductCategory>();
-				result.put(categpryId, group);
-			}
-			group.add(category);
-		}
-		return result;
 	}
 
 }

@@ -9,7 +9,7 @@ import org.sg.remy.business.entity.Albom;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.sg.remy.business.entity.Product;
-import org.sg.remy.business.model.CategoryFilter;
+import org.sg.remy.business.model.ProductCategoryFilter;
 import org.sg.remy.business.service.CategoryService;
 import org.sg.remy.business.service.CategoryTypeService;
 import org.sg.remy.business.service.RestaurantService;
@@ -171,7 +171,7 @@ public class InitDBComponent {
 	
 
 	public void initRestaurant(){
-		List<ProductCategory> categories = referenceService.find(new CategoryFilter());
+		List<ProductCategory> categories = referenceService.find(new ProductCategoryFilter());
 		
 		for (int i = 0; i < 151; i++) {
 			Product r = new Product();

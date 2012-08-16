@@ -1,5 +1,6 @@
 package org.sg.remy.common.command.impl;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,20 +16,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SpringCommandService implements ActionService {
+public class CommandServiceImpl implements ActionService {
 
 	private static Logger LOG = LoggerFactory
-			.getLogger(SpringCommandService.class);
+			.getLogger(CommandServiceImpl.class);
 
 	@Autowired
 	private ListableBeanFactory beanFactory;
 
-	private Map<Class<?>, Object> handlers = new HashMap<Class<?>, Object>();
+	private Map<Class<?>, Object> handlers = null;
 
 	@PostConstruct
 	public void init() {
 
 		LOG.info("Handlers searching...");
+		
+		Map<Class<?>, Object> localHandlers = new HashMap<Class<?>, Object>();
 		
 
 		for (@SuppressWarnings("rawtypes")
@@ -45,29 +48,32 @@ public class SpringCommandService implements ActionService {
 						+ Handler.class.getSimpleName() + " value = "
 						+ docReportAnnotation.action());
 
-				if (handlers.put(commandClass, entry.getValue()) != null) {
+				if (localHandlers.put(commandClass, entry.getValue()) != null) {
 					throw new IllegalStateException(
 							"There is more than one implementation of handler for "
 									+ commandClass.getName() + " action");
 				}
 			}
 		}
+		
+		handlers = Collections.unmodifiableMap(localHandlers);
 
 		LOG.info("Handlers: " + handlers);
 	}
 
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public Object doAction(Object command) {
-		Class<?> commandClass = command.getClass();
-		ActionHandler<Object, ?> handler = (ActionHandler<Object, ?>) handlers
+	public Object doAction(Object action) {
+		Class<?> commandClass = action.getClass();
+		@SuppressWarnings("rawtypes")
+		ActionHandler handler = (ActionHandler) handlers
 				.get(commandClass);
 		if (handler == null) {
 			throw new IllegalArgumentException("Handler for action "
 					+ commandClass.getName() + " is not found");
 		}
-		Object handleResult = handler.execute(command);
+		Object handleResult = handler.execute(action);
 		return handleResult;
 	}
-
 }

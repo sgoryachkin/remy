@@ -1,0 +1,35 @@
+@CHARSET "UTF-8";
+
+#layout-container {
+  	margin:auto;
+  	width: 1024px; 
+  	background: #ffffff;
+}
+
+#layout-header { 
+	height: 200px;
+}
+
+#layout-left {
+	float: left;
+	width: 174px;
+	height:100%;
+}
+
+#layout-content {
+	float:left;
+	width:700px;
+	height:100%;
+	background-color: #ffffff;
+}
+
+#layout-right {
+	float:right;
+	width: 150px;
+	height:100%;
+}
+
+#layout-footer {
+	clear:both;
+	background:#ffffff;
+} 

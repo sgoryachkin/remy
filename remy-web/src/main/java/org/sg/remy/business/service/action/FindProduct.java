@@ -2,9 +2,9 @@ package org.sg.remy.business.service.action;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.ProductFilter;
 
@@ -19,7 +19,6 @@ public class FindProduct implements Serializable{
 		this.pagingParam = pagingParam;
 	}
 	
-
 	public PagingParam<ProductFilter> getPagingParam() {
 		return pagingParam;
 	}

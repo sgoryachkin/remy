@@ -2,6 +2,6 @@ package org.sg.remy.common.command.api;
 
 public interface ActionService {
 
-	<A, R> R doAction(A command);
+	<A, R> R doAction(A action);
 
 }

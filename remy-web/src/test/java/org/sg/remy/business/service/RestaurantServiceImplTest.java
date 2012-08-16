@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.sg.remy.business.entity.Product;
-import org.sg.remy.business.model.CategoryFilter;
+import org.sg.remy.business.model.ProductCategoryFilter;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
@@ -179,7 +179,7 @@ public class RestaurantServiceImplTest {
 	
 
 	public void initRestaurant(){
-		List<ProductCategory> categories = referenceService.find(new CategoryFilter());
+		List<ProductCategory> categories = referenceService.find(new ProductCategoryFilter());
 		
 		for (int i = 0; i < 251; i++) {
 			Product r = new Product();
@@ -198,7 +198,7 @@ public class RestaurantServiceImplTest {
 	public void findByCategorySuccess(){
 		
 		Long pageSize = 7l;
-		List<ProductCategory> categories = referenceService.find(new CategoryFilter());
+		List<ProductCategory> categories = referenceService.find(new ProductCategoryFilter());
 		List<Long> categoryIds = new ArrayList<Long>();
 		for (ProductCategory category : categories) {
 			categoryIds.add(category.getId());
