@@ -15,7 +15,7 @@ public class ProductCategory extends AbstractEntity {
 	private ProductCategoryGroup productCategoryGroup;
 
 	@ManyToMany(targetEntity = Product.class, mappedBy = "categories")
-	private List<Product> restaurants;
+	private List<Product> products;
 	
 	@Column(nullable = false)
 	private Boolean showable;
@@ -28,12 +28,12 @@ public class ProductCategory extends AbstractEntity {
 		this.productCategoryGroup = productCategoryGroup;
 	}
 
-	public List<Product> getRestaurants() {
-		return restaurants;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setRestaurants(List<Product> restaurants) {
-		this.restaurants = restaurants;
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 	public Boolean getShowable() {

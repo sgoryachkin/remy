@@ -19,7 +19,11 @@ import org.sg.remy.business.service.action.FindProduct;
 import org.sg.remy.business.util.PagingCriteriaUtils;
 import org.sg.remy.common.command.api.ActionHandler;
 import org.sg.remy.common.command.api.Handler;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
+@Component
+@Transactional
 @Handler(action = FindProduct.class)
 public class FindProductHandler implements ActionHandler<FindProduct, PagingResult<Product>>{
 	

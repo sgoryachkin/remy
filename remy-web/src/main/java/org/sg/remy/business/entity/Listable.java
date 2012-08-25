@@ -6,12 +6,9 @@ import javax.persistence.Basic;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
 public class Listable extends AbstractEntity implements Serializable{
 	private static final long serialVersionUID = -7163590531646409878L;
 

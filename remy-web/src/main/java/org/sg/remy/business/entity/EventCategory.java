@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 public class EventCategory extends AbstractEntity {
 	private static final long serialVersionUID = 6138947472671379491L;
 
-	@ManyToMany(targetEntity = Product.class, mappedBy = "categories")
+	@ManyToMany(targetEntity = Event.class, mappedBy = "categories")
 	private List<Event> events;
 
 	@Column(nullable = false)
