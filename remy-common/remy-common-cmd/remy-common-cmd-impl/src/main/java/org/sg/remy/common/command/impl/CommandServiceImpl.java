@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
+import org.sg.remy.common.command.api.Action;
 import org.sg.remy.common.command.api.ActionHandler;
 import org.sg.remy.common.command.api.ActionService;
 import org.sg.remy.common.command.api.Handler;
@@ -62,18 +63,17 @@ public class CommandServiceImpl implements ActionService {
 	}
 
 
-	@SuppressWarnings("unchecked")
 	@Override
-	public Object doAction(Object action) {
+	public <R> R doAction(Action<R> action) {
 		Class<?> commandClass = action.getClass();
-		@SuppressWarnings("rawtypes")
-		ActionHandler handler = (ActionHandler) handlers
+		@SuppressWarnings("unchecked")
+		ActionHandler<Action<R>, R> handler = (ActionHandler<Action<R>, R>) handlers
 				.get(commandClass);
 		if (handler == null) {
 			throw new IllegalArgumentException("Handler for action "
 					+ commandClass.getName() + " is not found");
 		}
-		Object handleResult = handler.execute(action);
+		R handleResult = handler.execute(action);
 		return handleResult;
 	}
 }

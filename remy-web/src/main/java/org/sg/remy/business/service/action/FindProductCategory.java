@@ -1,11 +1,16 @@
 package org.sg.remy.business.service.action;
 
+import java.util.List;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.model.ProductCategoryFilter;
+import org.sg.remy.common.command.api.Action;
 
-public class FindProductCategory {
+public class FindProductCategory implements Action<List<ProductCategory>> {
+	private static final long serialVersionUID = 8289171811728368959L;
 	
 	private ProductCategoryFilter productCategoryFilter;
 	

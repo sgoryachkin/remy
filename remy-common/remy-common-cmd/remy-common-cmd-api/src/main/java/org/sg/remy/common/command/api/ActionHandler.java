@@ -8,7 +8,7 @@ package org.sg.remy.common.command.api;
  * @param <R>
  *            - result
  */
-public interface ActionHandler<A, R> {
+public interface ActionHandler<A extends Action<R>, R> {
 
 	R execute(A command);
 

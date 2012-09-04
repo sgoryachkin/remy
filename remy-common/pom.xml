@@ -12,6 +12,6 @@
   <name>remy-common</name>
   <url>http://maven.apache.org</url>
   <modules>
-  	<module>remy-common-command</module>
+  	<module>remy-common-cmd</module>
   </modules>
 </project>

@@ -1,14 +1,14 @@
 package org.sg.remy.business.service.action;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.sg.remy.common.command.api.Action;
 
-public class Save implements Serializable {
+public class Save implements Action<Void>{
 	private static final long serialVersionUID = 1781943383915235878L;
 
 	private Collection<Object> objects = new ArrayList<Object>();

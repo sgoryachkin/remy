@@ -36,13 +36,13 @@
 
 		<dependency>
 			<groupId>com.sg.remy</groupId>
-			<artifactId>remy-common-command-api</artifactId>
+			<artifactId>remy-common-cmd-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>com.sg.remy</groupId>
-			<artifactId>remy-common-command-impl</artifactId>
+			<artifactId>remy-common-cmd-impl</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

@@ -5,10 +5,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.sg.remy</groupId>
-		<artifactId>remy-common-command</artifactId>
+		<artifactId>remy-common-cmd</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>remy-common-command-impl</artifactId>
+	<artifactId>remy-common-cmd-impl</artifactId>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 
@@ -20,7 +20,7 @@
 
 		<dependency>
 			<groupId>com.sg.remy</groupId>
-			<artifactId>remy-common-command-api</artifactId>
+			<artifactId>remy-common-cmd-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
