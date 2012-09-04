@@ -49,13 +49,13 @@ public class FindProductIdsHandler implements
 		pagingResult.setPage(param.getPage());
 
 		// Set selection for count 
-		cq.select(cb.count(fromProduct));
+		cq.select(cb.count(fromProduct.get(Product_.id)));
 		pagingResult.setCount(em.createQuery(cq).getSingleResult());
 		pagingResult.setPageCount(PagingCriteriaUtils.calcPageCount(
 				pagingResult.getCount(), param.getPageSize()));
 
 		// Set selection for ids
-		cq.select(fromProduct.get(Product_.id)).distinct(true);
+		cq.select(fromProduct.get(Product_.id));//.distinct(true);
 		pagingResult.setResult(em
 				.createQuery(cq)
 				.setFirstResult(

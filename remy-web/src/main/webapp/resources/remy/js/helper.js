@@ -26,7 +26,7 @@ var picasa = function(userId, albomId, photoListener) {
 				+ '/albumid/' + albomId + '?alt=json&thumbsize=80',
 		crossDomain : true,
 		dataType : 'json',
-		async : false,
+		async : true,
 		success : parseData
 	});
 
