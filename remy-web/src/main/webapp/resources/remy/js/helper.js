@@ -1,4 +1,4 @@
-var picasa = function(userId, albomId, photoListener) {
+var picasa = function(userId, albomId, photoListener, postProcessListener) {
 
 	var parseData = function(data) {
 		$.each(data.feed.entry, function(i, item) {
@@ -18,6 +18,7 @@ var picasa = function(userId, albomId, photoListener) {
 
 			photoListener(photoUrl, photoTitle, photoThumb);
 		});
+		postProcessListener();
 	};
 
 	$.ajax({
