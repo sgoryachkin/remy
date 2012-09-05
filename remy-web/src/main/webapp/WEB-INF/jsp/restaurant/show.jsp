@@ -6,14 +6,14 @@
 
 
 	<h2>
-		<c:out value="${restaurant.name}" />
+		<c:out value="${product.name}" />
 	</h2>
 
 	<h3>
-		<c:out value="${restaurant.description}" />
+		<c:out value="${product.description}" />
 	</h3>
 
-	<c:forEach items="${restaurant.categories}" var="bean">
+	<c:forEach items="${product.categories}" var="bean">
 
 		<p>
 			<c:out value="${bean.name}" />

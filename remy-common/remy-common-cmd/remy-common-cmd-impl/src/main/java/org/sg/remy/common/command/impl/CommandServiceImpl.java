@@ -6,8 +6,8 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.sg.remy.common.command.api.Action;
-import org.sg.remy.common.command.api.ActionHandler;
+import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.command.api.CommandHandler;
 import org.sg.remy.common.command.api.ActionService;
 import org.sg.remy.common.command.api.Handler;
 import org.slf4j.Logger;
@@ -36,8 +36,8 @@ public class CommandServiceImpl implements ActionService {
 		
 
 		for (@SuppressWarnings("rawtypes")
-		Map.Entry<String, ActionHandler> entry : beanFactory.getBeansOfType(
-				ActionHandler.class).entrySet()) {
+		Map.Entry<String, CommandHandler> entry : beanFactory.getBeansOfType(
+				CommandHandler.class).entrySet()) {
 
 			Handler docReportAnnotation = beanFactory.findAnnotationOnBean(
 					entry.getKey(), Handler.class);
@@ -64,10 +64,10 @@ public class CommandServiceImpl implements ActionService {
 
 
 	@Override
-	public <R> R doAction(Action<R> action) {
+	public <R> R doAction(CommandAction<R> action) {
 		Class<?> commandClass = action.getClass();
 		@SuppressWarnings("unchecked")
-		ActionHandler<Action<R>, R> handler = (ActionHandler<Action<R>, R>) handlers
+		CommandHandler<CommandAction<R>, R> handler = (CommandHandler<CommandAction<R>, R>) handlers
 				.get(commandClass);
 		if (handler == null) {
 			throw new IllegalArgumentException("Handler for action "

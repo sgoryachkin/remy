@@ -3,8 +3,8 @@ package org.sg.remy.business.service.handler;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.sg.remy.business.entity.Listable;
-import org.sg.remy.business.service.action.GetListable;
+import org.sg.remy.business.entity.Product;
+import org.sg.remy.business.service.action.GetProduct;
 import org.sg.remy.common.command.api.CommandHandler;
 import org.sg.remy.common.command.api.Handler;
 import org.springframework.stereotype.Component;
@@ -12,18 +12,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-@Handler(action = GetListable.class)
-public class GetListableHandler implements CommandHandler<GetListable, Listable>{
+@Handler(action = GetProduct.class)
+public class GetProductHandler implements CommandHandler<GetProduct, Product>{
 	
 	@PersistenceContext
 	EntityManager em;
 
 	@Override
-	public Listable execute(GetListable command) {
-		Listable listable = em.find(Listable.class, command.getId());
-		return listable;
+	public Product execute(GetProduct command) {
+		Product product = em.find(Product.class, command.getId());
+		product.getCategories().size();
+		return product;
 	}
-
-
 
 }

@@ -11,7 +11,7 @@ import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProduct;
 import org.sg.remy.business.service.action.FindProductIds;
 import org.sg.remy.business.service.action.GetListable;
-import org.sg.remy.common.command.api.ActionHandler;
+import org.sg.remy.common.command.api.CommandHandler;
 import org.sg.remy.common.command.api.ActionService;
 import org.sg.remy.common.command.api.Handler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Transactional
 @Handler(action = FindProduct.class)
-public class FindProductHandler implements ActionHandler<FindProduct, PagingResult<Listable>>{
+public class FindProductHandler implements CommandHandler<FindProduct, PagingResult<Listable>>{
 	
 	@Autowired
 	ActionService actionService;

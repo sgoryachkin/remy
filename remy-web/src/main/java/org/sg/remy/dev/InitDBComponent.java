@@ -4,14 +4,14 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 
 import org.sg.remy.business.entity.Albom;
 import org.sg.remy.business.entity.Product;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.entity.ProductCategoryGroup;
-import org.sg.remy.business.model.ProductCategoryFilter;
-import org.sg.remy.business.service.CategoryService;
-import org.sg.remy.business.service.CategoryTypeService;
 import org.sg.remy.business.service.action.Save;
 import org.sg.remy.common.command.api.ActionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +20,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class InitDBComponent {
 	
+	@PersistenceContext
+	EntityManager em;
+	
+
+	private List<ProductCategoryGroup> getAllProductCategoryGroup() {
+		CriteriaQuery<ProductCategoryGroup> cq = em.getCriteriaBuilder().createQuery(ProductCategoryGroup.class);
+		cq.from(ProductCategoryGroup.class);
+		return em.createQuery(cq).getResultList();
+	}
+	
+	private List<ProductCategory> getAllProductCategory() {
+		CriteriaQuery<ProductCategory> cq = em.getCriteriaBuilder().createQuery(ProductCategory.class);
+		cq.from(ProductCategory.class);
+		return em.createQuery(cq).getResultList();
+	}
+	
 	@Autowired
 	ActionService commandService;
-	
-	@Autowired
-	CategoryTypeService categoryTypeService;
-	
-	@Autowired
-	CategoryService referenceService;
 	
 
 	@PostConstruct
@@ -66,7 +76,7 @@ public class InitDBComponent {
 	
 	public void initCategory(){
 		
-		List<ProductCategoryGroup> categoryTypes = categoryTypeService.getAll();
+		List<ProductCategoryGroup> categoryTypes = getAllProductCategoryGroup();
 		
 		Iterator<ProductCategoryGroup> cti = categoryTypes.iterator();
 		ProductCategoryGroup categoryType = cti.next();
@@ -185,7 +195,7 @@ public class InitDBComponent {
 	
 
 	public void initRestaurant(){
-		List<ProductCategory> categories = referenceService.find(new ProductCategoryFilter());
+		List<ProductCategory> categories = getAllProductCategory();
 		System.out.println(categories);
 		
 		for (int i = 0; i < 151; i++) {

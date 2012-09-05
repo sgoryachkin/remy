@@ -5,17 +5,17 @@ import java.io.Serializable;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.sg.remy.business.entity.Listable;
+import org.sg.remy.business.entity.Product;
 import org.sg.remy.common.command.api.CommandAction;
 
-public class GetListable implements Serializable, CommandAction<Listable>{
-	private static final long serialVersionUID = -9064270900820473599L;
+public class GetProduct implements Serializable, CommandAction<Product>{
+	private static final long serialVersionUID = 7688473178937520203L;
 	
 	private Long id;
 	
-	public GetListable(){}
+	public GetProduct(){}
 	
-	public GetListable(Long id){
+	public GetProduct(Long id){
 		this.id = id;
 	}
 	
@@ -40,7 +40,7 @@ public class GetListable implements Serializable, CommandAction<Listable>{
 			return true;
 		if (obj.getClass() != getClass())
 			return false;
-		GetListable rhs = (GetListable) obj;
+		GetProduct rhs = (GetProduct) obj;
         return new EqualsBuilder().append(this.id, rhs.id).isEquals();
 	}
 	

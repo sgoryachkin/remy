@@ -6,9 +6,9 @@ import java.util.Collection;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.sg.remy.common.command.api.Action;
+import org.sg.remy.common.command.api.CommandAction;
 
-public class Save implements Action<Void>{
+public class Save implements CommandAction<Void>{
 	private static final long serialVersionUID = 1781943383915235878L;
 
 	private Collection<Object> objects = new ArrayList<Object>();

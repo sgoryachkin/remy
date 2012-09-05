@@ -15,7 +15,7 @@ import org.sg.remy.business.entity.ProductCategoryGroup_;
 import org.sg.remy.business.entity.ProductCategory_;
 import org.sg.remy.business.model.ProductCategoryFilter;
 import org.sg.remy.business.service.action.FindProductCategory;
-import org.sg.remy.common.command.api.ActionHandler;
+import org.sg.remy.common.command.api.CommandHandler;
 import org.sg.remy.common.command.api.Handler;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @Transactional
 @Handler(action = FindProductCategory.class)
-public class FindProductCategoryHandler implements ActionHandler<FindProductCategory, List<ProductCategory>>{
+public class FindProductCategoryHandler implements CommandHandler<FindProductCategory, List<ProductCategory>>{
 	
 	@PersistenceContext
 	private EntityManager em;

@@ -16,7 +16,7 @@ import org.sg.remy.business.model.PagingResultImpl;
 import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProductIds;
 import org.sg.remy.business.util.PagingCriteriaUtils;
-import org.sg.remy.common.command.api.ActionHandler;
+import org.sg.remy.common.command.api.CommandHandler;
 import org.sg.remy.common.command.api.Handler;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Handler(action = FindProductIds.class)
 public class FindProductIdsHandler implements
-		ActionHandler<FindProductIds, PagingResult<Long>> {
+		CommandHandler<FindProductIds, PagingResult<Long>> {
 
 	@PersistenceContext
 	private EntityManager em;

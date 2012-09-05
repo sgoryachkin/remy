@@ -8,7 +8,7 @@ import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProduct;
-import org.sg.remy.business.service.action.GetListable;
+import org.sg.remy.business.service.action.GetProduct;
 import org.sg.remy.common.command.api.ActionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,7 +47,8 @@ public class RestaurantController {
 
 	@RequestMapping(value = MAPPING_SHOW, method = RequestMethod.GET)
 	public Product show(@RequestParam Long id) {
-		return (Product) actionService.doAction(new GetListable(id));
+		Product product = actionService.doAction(new GetProduct(id));
+		return product;
 	}
 
 	@RequestMapping(value = MAPPING_ADD, method = RequestMethod.POST)
