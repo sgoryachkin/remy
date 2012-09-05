@@ -15,8 +15,8 @@ import org.sg.remy.business.entity.ProductCategoryGroup_;
 import org.sg.remy.business.entity.ProductCategory_;
 import org.sg.remy.business.model.ProductCategoryFilter;
 import org.sg.remy.business.service.action.FindProductCategory;
-import org.sg.remy.common.command.api.CommandHandler;
-import org.sg.remy.common.command.api.Handler;
+import org.sg.remy.common.cmd.api.CommandHandler;
+import org.sg.remy.common.cmd.api.Handler;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

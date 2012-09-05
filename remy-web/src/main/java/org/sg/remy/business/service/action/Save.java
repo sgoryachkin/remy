@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class Save implements CommandAction<Void>{
 	private static final long serialVersionUID = 1781943383915235878L;

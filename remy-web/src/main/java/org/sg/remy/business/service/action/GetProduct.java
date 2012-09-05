@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.entity.Product;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class GetProduct implements Serializable, CommandAction<Product>{
 	private static final long serialVersionUID = 7688473178937520203L;

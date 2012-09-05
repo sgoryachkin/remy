@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.entity.Listable;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class GetListable implements Serializable, CommandAction<Listable>{
 	private static final long serialVersionUID = -9064270900820473599L;

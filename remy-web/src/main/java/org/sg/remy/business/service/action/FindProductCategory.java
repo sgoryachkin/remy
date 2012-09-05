@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.model.ProductCategoryFilter;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class FindProductCategory implements CommandAction<List<ProductCategory>> {
 	private static final long serialVersionUID = 8289171811728368959L;

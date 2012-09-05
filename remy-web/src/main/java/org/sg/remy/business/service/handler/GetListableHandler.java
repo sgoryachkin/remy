@@ -5,8 +5,8 @@ import javax.persistence.PersistenceContext;
 
 import org.sg.remy.business.entity.Listable;
 import org.sg.remy.business.service.action.GetListable;
-import org.sg.remy.common.command.api.CommandHandler;
-import org.sg.remy.common.command.api.Handler;
+import org.sg.remy.common.cmd.api.CommandHandler;
+import org.sg.remy.common.cmd.api.Handler;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 

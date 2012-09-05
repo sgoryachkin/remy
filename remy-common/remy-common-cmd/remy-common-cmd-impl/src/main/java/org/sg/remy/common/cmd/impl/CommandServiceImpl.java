@@ -1,4 +1,4 @@
-package org.sg.remy.common.command.impl;
+package org.sg.remy.common.cmd.impl;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.sg.remy.common.command.api.CommandAction;
-import org.sg.remy.common.command.api.CommandHandler;
-import org.sg.remy.common.command.api.ActionService;
-import org.sg.remy.common.command.api.Handler;
+import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandHandler;
+import org.sg.remy.common.cmd.api.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ListableBeanFactory;

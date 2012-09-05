@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class FindProductIds implements Serializable, CommandAction<PagingResult<Long>>{
 	private static final long serialVersionUID = -1949958005718397244L;

@@ -15,7 +15,7 @@ import org.apache.tiles.preparer.ViewPreparerSupport;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.model.ProductCategoryFilter;
 import org.sg.remy.business.service.action.FindProductCategory;
-import org.sg.remy.common.command.api.ActionService;
+import org.sg.remy.common.cmd.api.ActionService;
 import org.sg.remy.web.model.Menu;
 import org.sg.remy.web.model.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;

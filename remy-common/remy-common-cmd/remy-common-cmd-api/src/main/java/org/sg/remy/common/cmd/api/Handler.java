@@ -1,4 +1,4 @@
-package org.sg.remy.common.command.api;
+package org.sg.remy.common.cmd.api;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

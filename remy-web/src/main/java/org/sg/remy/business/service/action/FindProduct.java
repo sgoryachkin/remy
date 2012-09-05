@@ -9,7 +9,7 @@ import org.sg.remy.business.entity.Listable;
 import org.sg.remy.business.model.PagingParam;
 import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
-import org.sg.remy.common.command.api.CommandAction;
+import org.sg.remy.common.cmd.api.CommandAction;
 
 public class FindProduct implements Serializable, CommandAction<PagingResult<Listable>>{
 	private static final long serialVersionUID = -1949958005718397244L;
