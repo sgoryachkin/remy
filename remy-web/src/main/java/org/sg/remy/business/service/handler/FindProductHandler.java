@@ -11,20 +11,20 @@ import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProduct;
 import org.sg.remy.business.service.action.FindProductIds;
 import org.sg.remy.business.service.action.GetListable;
-import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandActionService;
 import org.sg.remy.common.cmd.api.CommandHandler;
-import org.sg.remy.common.cmd.api.Handler;
+import org.sg.remy.common.cmd.api.HandlerFor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-@Handler(action = FindProduct.class)
+@HandlerFor(FindProduct.class)
 public class FindProductHandler implements CommandHandler<FindProduct, PagingResult<Listable>>{
 	
 	@Autowired
-	ActionService actionService;
+	CommandActionService actionService;
 
 	@Override
 	public PagingResult<Listable> execute(FindProduct findProduct) {

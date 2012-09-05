@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
-import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandActionService;
 import org.sg.remy.common.cmd.api.CommandAction;
 import org.sg.remy.common.cmd.api.CommandHandler;
-import org.sg.remy.common.cmd.api.Handler;
+import org.sg.remy.common.cmd.api.HandlerFor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
@@ -17,10 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommandServiceImpl implements ActionService {
+public class CommandActionServiceSpringImpl implements CommandActionService {
 
 	private static Logger LOG = LoggerFactory
-			.getLogger(CommandServiceImpl.class);
+			.getLogger(CommandActionServiceSpringImpl.class);
 
 	@Autowired
 	private ListableBeanFactory beanFactory;
@@ -39,15 +39,15 @@ public class CommandServiceImpl implements ActionService {
 		Map.Entry<String, CommandHandler> entry : beanFactory.getBeansOfType(
 				CommandHandler.class).entrySet()) {
 
-			Handler docReportAnnotation = beanFactory.findAnnotationOnBean(
-					entry.getKey(), Handler.class);
+			HandlerFor docReportAnnotation = beanFactory.findAnnotationOnBean(
+					entry.getKey(), HandlerFor.class);
 
-			for (Class<?> commandClass : docReportAnnotation.action()) {
+			for (Class<?> commandClass : docReportAnnotation.value()) {
 				LOG.info("Bean name: " + entry.getKey() + ", bean: "
 						+ entry.getValue() + ", bean class: "
 						+ entry.getValue().getClass() + ", "
-						+ Handler.class.getSimpleName() + " value = "
-						+ docReportAnnotation.action());
+						+ HandlerFor.class.getSimpleName() + " value = "
+						+ docReportAnnotation.value());
 
 				if (localHandlers.put(commandClass, entry.getValue()) != null) {
 					throw new IllegalStateException(
@@ -73,7 +73,6 @@ public class CommandServiceImpl implements ActionService {
 			throw new IllegalArgumentException("Handler for action "
 					+ commandClass.getName() + " is not found");
 		}
-		R handleResult = handler.execute(action);
-		return handleResult;
+		return handler.execute(action);
 	}
 }

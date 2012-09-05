@@ -5,13 +5,13 @@ import javax.persistence.PersistenceContext;
 
 import org.sg.remy.business.service.action.Save;
 import org.sg.remy.common.cmd.api.CommandHandler;
-import org.sg.remy.common.cmd.api.Handler;
+import org.sg.remy.common.cmd.api.HandlerFor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-@Handler(action = Save.class)
+@HandlerFor(Save.class)
 public class SaveHandler implements CommandHandler<Save, Void> {
 
 	@PersistenceContext

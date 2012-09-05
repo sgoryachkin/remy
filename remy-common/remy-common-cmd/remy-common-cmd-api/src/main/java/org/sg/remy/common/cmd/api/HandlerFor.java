@@ -9,8 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Handler {
+public @interface HandlerFor {
 
-	Class<?>[] action();
+	Class<?>[] value();
 
 }

@@ -9,7 +9,7 @@ import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProduct;
 import org.sg.remy.business.service.action.GetProduct;
-import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandActionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RestaurantController {
 
 	@Autowired
-	ActionService actionService;
+	CommandActionService actionService;
 
 	private static Logger LOG = LoggerFactory
 			.getLogger(RestaurantController.class);

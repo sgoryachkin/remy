@@ -1,7 +1,5 @@
 package org.sg.remy.business.service.action;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -11,7 +9,7 @@ import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.common.cmd.api.CommandAction;
 
-public class FindProduct implements Serializable, CommandAction<PagingResult<Listable>>{
+public class FindProduct implements CommandAction<PagingResult<Listable>>{
 	private static final long serialVersionUID = -1949958005718397244L;
 	
 	private PagingParam<ProductFilter> pagingParam;

@@ -17,13 +17,13 @@ import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProductIds;
 import org.sg.remy.business.util.PagingCriteriaUtils;
 import org.sg.remy.common.cmd.api.CommandHandler;
-import org.sg.remy.common.cmd.api.Handler;
+import org.sg.remy.common.cmd.api.HandlerFor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @Component
 @Transactional
-@Handler(action = FindProductIds.class)
+@HandlerFor(FindProductIds.class)
 public class FindProductIdsHandler implements
 		CommandHandler<FindProductIds, PagingResult<Long>> {
 

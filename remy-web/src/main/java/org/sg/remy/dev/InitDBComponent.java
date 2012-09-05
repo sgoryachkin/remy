@@ -13,7 +13,7 @@ import org.sg.remy.business.entity.Product;
 import org.sg.remy.business.entity.ProductCategory;
 import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.sg.remy.business.service.action.Save;
-import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -37,7 +37,7 @@ public class InitDBComponent {
 	}
 	
 	@Autowired
-	ActionService commandService;
+	CommandActionService commandService;
 	
 
 	@PostConstruct

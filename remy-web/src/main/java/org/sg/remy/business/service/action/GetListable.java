@@ -1,14 +1,12 @@
 package org.sg.remy.business.service.action;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.sg.remy.business.entity.Listable;
 import org.sg.remy.common.cmd.api.CommandAction;
 
-public class GetListable implements Serializable, CommandAction<Listable>{
+public class GetListable implements CommandAction<Listable>{
 	private static final long serialVersionUID = -9064270900820473599L;
 	
 	private Long id;

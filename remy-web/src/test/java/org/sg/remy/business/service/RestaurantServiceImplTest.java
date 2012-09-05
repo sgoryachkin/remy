@@ -17,7 +17,7 @@ import org.sg.remy.business.model.PagingResult;
 import org.sg.remy.business.model.ProductFilter;
 import org.sg.remy.business.service.action.FindProduct;
 import org.sg.remy.business.service.action.Save;
-import org.sg.remy.common.cmd.api.ActionService;
+import org.sg.remy.common.cmd.api.CommandActionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -28,7 +28,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class RestaurantServiceImplTest {
 	
 	@Autowired
-	ActionService actionService;
+	CommandActionService actionService;
 	
 	
 	//@Before
