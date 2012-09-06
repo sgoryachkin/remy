@@ -14,8 +14,9 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class ProductCategoryFilter implements Serializable {
 	private static final long serialVersionUID = -5188763646803827622L;
 
-	private Collection<Long> typeIds;
-	private Boolean showableType;
+	private Collection<Long> groupeIds;
+	private Boolean showable;
+	private Boolean showableGroup;
 	private ProductFilter productFilter;
 
 	public ProductCategoryFilter() {
@@ -25,25 +26,33 @@ public class ProductCategoryFilter implements Serializable {
 	public ProductCategoryFilter(Collection<Long> typeIds,
 			Boolean showableType, ProductFilter productFilter) {
 		super();
-		this.typeIds = typeIds;
-		this.showableType = showableType;
+		this.groupeIds = typeIds;
+		this.showable = showableType;
 		this.productFilter = productFilter;
 	}
 
-	public Boolean getShowableType() {
-		return showableType;
+	public Boolean getShowable() {
+		return showable;
 	}
 
-	public void setShowableType(Boolean showableType) {
-		this.showableType = showableType;
+	public void setShowable(Boolean showableType) {
+		this.showable = showableType;
 	}
 
-	public Collection<Long> getTypeIds() {
-		return typeIds;
+	public Collection<Long> getGroupIds() {
+		return groupeIds;
 	}
 
-	public void setTypeIds(Collection<Long> typeIds) {
-		this.typeIds = typeIds;
+	public void setGroupeIds(Collection<Long> typeIds) {
+		this.groupeIds = typeIds;
+	}
+
+	public Boolean getShowableGroup() {
+		return showableGroup;
+	}
+
+	public void setShowableGroup(Boolean showableGroup) {
+		this.showableGroup = showableGroup;
 	}
 
 	public ProductFilter getProductFilter() {
@@ -56,7 +65,7 @@ public class ProductCategoryFilter implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder().append(typeIds).append(this.showableType)
+		return new HashCodeBuilder().append(groupeIds).append(this.showable).append(showableGroup)
 				.append(this.productFilter).toHashCode();
 	}
 
@@ -69,15 +78,16 @@ public class ProductCategoryFilter implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		ProductCategoryFilter rhs = (ProductCategoryFilter) obj;
-		return new EqualsBuilder().append(this.typeIds, rhs.typeIds)
-				.append(this.showableType, rhs.showableType)
+		return new EqualsBuilder().append(this.groupeIds, rhs.groupeIds)
+				.append(this.showable, rhs.showable)
+				.append(this.showableGroup, rhs.showableGroup)
 				.append(this.productFilter, rhs.productFilter).isEquals();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append(this.typeIds)
-				.append(this.showableType).append(productFilter).toString();
+		return new ToStringBuilder(this).append(this.groupeIds)
+				.append(this.showable).append(this.showableGroup).append(productFilter).toString();
 	}
 
 }

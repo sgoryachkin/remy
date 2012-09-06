@@ -33,7 +33,7 @@ public class MenuItem {
 	}
 
 	public String getCaption() {
-		return getName();
+		return getName() + " (" + getCount() + ")";
 	}
 
 }

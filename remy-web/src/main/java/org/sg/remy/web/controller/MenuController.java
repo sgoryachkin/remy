@@ -49,6 +49,7 @@ public class MenuController extends ViewPreparerSupport{
     			MenuItem menuItem = new MenuItem();
     			menuItem.setName(ref.getName());
     			menuItem.setUrl(request.getContextPath() + "/dispatcher/restaurant/find?page=1&amp;category=" + ref.getId());
+    			menuItem.setCount(ref.getProductCount());
     			menuItems.add(menuItem);
     		}
         	menu.setName(entry.getValue().iterator().next().getProductCategoryGroup().getName());

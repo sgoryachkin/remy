@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class ProductCategory extends AbstractEntity {
@@ -19,6 +20,9 @@ public class ProductCategory extends AbstractEntity {
 	
 	@Column(nullable = false)
 	private Boolean showable;
+	
+	@Transient
+	private Long productCount;
 
 	public ProductCategoryGroup getProductCategoryGroup() {
 		return productCategoryGroup;
@@ -42,6 +46,14 @@ public class ProductCategory extends AbstractEntity {
 
 	public void setShowable(Boolean showable) {
 		this.showable = showable;
+	}
+
+	public Long getProductCount() {
+		return productCount;
+	}
+
+	public void setProductCount(Long productCount) {
+		this.productCount = productCount;
 	}
 
 }
