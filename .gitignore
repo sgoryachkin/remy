@@ -2,4 +2,8 @@ target
 .settings
 .project
 .classpath
+.spring*
+btm*log
+*.epoch
 testdb.*
+
