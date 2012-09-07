@@ -47,7 +47,7 @@ public class InitDBComponent {
 		initRestaurant();
 	}
 	
-	public void initCategoryType(){
+	private void initCategoryType(){
 		ProductCategoryGroup categoryType = new ProductCategoryGroup();
 		categoryType.setName("Тип заведения");
 		categoryType.setMultiple(true);
@@ -74,7 +74,7 @@ public class InitDBComponent {
 		
 	}
 	
-	public void initCategory(){
+	private void initCategory(){
 		
 		List<ProductCategoryGroup> categoryTypes = getAllProductCategoryGroup();
 		
@@ -194,7 +194,7 @@ public class InitDBComponent {
 	}
 	
 
-	public void initRestaurant(){
+	private void initRestaurant(){
 		List<ProductCategory> categories = getAllProductCategory();
 		System.out.println(categories);
 		

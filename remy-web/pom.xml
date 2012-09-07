@@ -166,6 +166,11 @@
 						<version>2.2.8</version>
 					</dependency>
 					<dependency>
+						<groupId>org.apache.derby</groupId>
+						<artifactId>derby</artifactId>
+						<version>10.9.1.0</version>
+					</dependency>
+					<dependency>
 						<groupId>com.atomikos</groupId>
 						<artifactId>transactions-hibernate3</artifactId>
 						<version>3.8.0</version>

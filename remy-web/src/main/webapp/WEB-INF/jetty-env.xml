@@ -14,49 +14,28 @@
 			</New>
 		</Arg>
 	</New>
-	
-		<Call name="getConfiguration" class="bitronix.tm.TransactionManagerServices">
-		<Set name="serverId">jetty-btm-node0</Set>
-		<Set name="logPart1Filename">
-			<SystemProperty name="jetty.home" default="." />
-			btm1.log
-		</Set>
-		<Set name="logPart2Filename">
-			<SystemProperty name="jetty.home" default="." />
-			btm2.log
-		</Set>
-	</Call>
 
-	<!-- <Call name="addLifeCycle"> <Arg> <New class="bitronix.tm.integration.jetty6.BTMLifeCycle" 
-		/> </Arg> </Call> -->
-	<New class="org.mortbay.jetty.plus.naming.Transaction">
+
+	<New id="tx" class="org.mortbay.jetty.plus.naming.Transaction">
 		<Arg>
 			<Call name="getTransactionManager" class="bitronix.tm.TransactionManagerServices" />
 		</Arg>
 	</New>
 
+
 	<New id="emf" class="org.mortbay.jetty.plus.naming.Resource">
 		<Arg>persistence/RemyPersistenceUnit</Arg>
 		<Arg>
 			<Call class="javax.persistence.Persistence" name="createEntityManagerFactory">
-				<Arg>
-					RemyPersistenceUnit
-				</Arg>
+				<Arg>RemyPersistenceUnit</Arg>
 				<Arg>
 					<Map>
 						<Entry>
-							<Item>transaction.factory_class</Item>
+							<Item>hibernate.transaction.manager_lookup_class</Item>
 							<Item>
 								<New class="java.lang.String">
-									<Arg>org.hibernate.transaction.JTATransactionFactory</Arg>
-								</New>
-							</Item>
-						</Entry>
-						<Entry>
-							<Item>transaction.manager_lookup_class</Item>
-							<Item>
-								<New class="java.lang.String">
-									<Arg>org.hibernate.transaction.BTMTransactionManagerLookup</Arg>
+									<Arg>org.hibernate.transaction.BTMTransactionManagerLookup
+									</Arg>
 								</New>
 							</Item>
 						</Entry>
@@ -66,8 +45,4 @@
 		</Arg>
 	</New>
 
-
-
-	<!-- <New id="tx" class="org.mortbay.jetty.plus.naming.Transaction"> <Arg> 
-		<New class="com.atomikos.icatch.jta.J2eeUserTransaction"/> </Arg> </New> -->
 </Configure>
