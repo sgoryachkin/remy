@@ -10,12 +10,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	
 	<jee:jndi-lookup id="entityManagerFactory" jndi-name="persistence/RemyPersistenceUnit"/> 
-
+	
+	<tx:jta-transaction-manager/>
+<!-- 
 	<bean id="transactionManager"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>
-
+ -->
 	<tx:annotation-driven />
 
 </beans>
