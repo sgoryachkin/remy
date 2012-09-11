@@ -3,6 +3,7 @@
 	xmlns:jsp="http://java.sun.com/JSP/Page"
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.1">
 
+
 		<tiles:insertAttribute name="widget0" ignore="true" />
 
 		<tiles:insertAttribute name="widget1" ignore="true" />

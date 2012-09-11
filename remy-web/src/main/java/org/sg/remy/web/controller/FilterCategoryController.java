@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class MenuController extends ViewPreparerSupport{
+public class FilterCategoryController extends ViewPreparerSupport{
 	
 	@Autowired
 	private CommandActionService actionService;

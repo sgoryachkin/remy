@@ -104,9 +104,6 @@ ul#icons span.ui-icon {
 </style>
 
 
-
-
-
 </head>
 <body>
 
@@ -116,23 +113,20 @@ ul#icons span.ui-icon {
 		</div>
 		<div id="layout-container2">
 			<div id="layout-left">
-				<tiles:insertAttribute name="menu" />
+				<tiles:insertAttribute name="left" />
 			</div>
 			<div id="layout-content">
-				<div style="margin: 5px; padding: 5px;"
-					class="ui-widget ui-widget-content ui-corner-all">
-					<tiles:insertAttribute name="content" />
-				</div>
+				<tiles:insertAttribute name="content" />
 			</div>
-			<div id="layout-right">Right</div>
+			<div id="layout-right">
+				<tiles:insertAttribute name="right" />
+			</div>
 		</div>
 		<div id="layout-footer">
-			<div style="margin-top: 5px; padding: 5px;"
-				class="ui-widget ui-widget-content ui-corner-all">
-				<tiles:insertAttribute name="footer" />
-			</div>
+			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
+
 </body>
 	</html>
 </jsp:root>

@@ -5,25 +5,29 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.1">
 
 
-	<h2>
-		<c:out value="${product.name}" />
-	</h2>
+	<div style="margin-top: 5px; padding: 5px;"
+		class="ui-widget ui-widget-content ui-corner-all">
 
-	<h3>
-		<c:out value="${product.description}" />
-	</h3>
+		<h2>
+			<c:out value="${product.name}" />
+		</h2>
 
-	<c:forEach items="${product.categories}" var="bean">
+		<h3>
+			<c:out value="${product.description}" />
+		</h3>
 
-		<p>
-			<c:out value="${bean.name}" />
-		</p>
+		<c:forEach items="${product.categories}" var="bean">
 
-	</c:forEach>
+			<p>
+				<c:out value="${bean.name}" />
+			</p>
 
-	<div id="restaurant_show_gallery"/>
+		</c:forEach>
 
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/remy/js/gallery.js" />
+		<div id="restaurant_show_gallery" />
+
+		<script type="text/javascript"
+			src="${pageContext.request.contextPath}/resources/remy/js/gallery.js" />
+	</div>
 
 </jsp:root>

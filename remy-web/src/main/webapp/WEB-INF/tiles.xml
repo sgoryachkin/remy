@@ -5,33 +5,73 @@
 
 <tiles-definitions>
 
-	<definition name="menu" preparer="menuController" template="/WEB-INF/jsp/menu.jsp">
-	</definition>
+	<definition name="mainbanner" template="/WEB-INF/jsp/misc/mainbanner.jsp"/>
+	<definition name="xhtmlvalid" template="/WEB-INF/jsp/misc/xhtmlvalid.jsp"/>
 
+	<definition name="filter_categories" preparer="filterCategoryController" template="/WEB-INF/jsp/misc/filter_categories.jsp"/>	
+	<definition name="filter_parms"  template="/WEB-INF/jsp/misc/filter_params.jsp"/>
+	<definition name="filter_text"  template="/WEB-INF/jsp/misc/filter_text.jsp"/>
+	
+	<definition name="category_all" template="/WEB-INF/jsp/misc/category_all.jsp"/>
+    <definition name="categorygroup_all" template="/WEB-INF/jsp/misc/categorygroup_all.jsp"/>
+    
+ <!-- Layout -->    
+    
+    <definition name="header" template="/WEB-INF/jsp/header.jsp">
+		<put-attribute name="widget0" value="mainbanner" />
+	</definition>
+	
+	<definition name="left" template="/WEB-INF/jsp/left.jsp">
+		<put-attribute name="widget0" value="filter_categories" />
+	</definition>
+	
+	<definition name="right" template="/WEB-INF/jsp/right.jsp">
+		<put-attribute name="widget0" value="categorygroup_all" />
+	</definition>
+	
+	<definition name="footer" template="/WEB-INF/jsp/footer.jsp">
+		<put-attribute name="widget0" value="xhtmlvalid" />
+	</definition>
+	
 	<definition name="layout" template="/WEB-INF/jsp/layout.jsp">
-		<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
-		<put-attribute name="menu" value="menu" />
-		<put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+		<put-attribute name="header" value="header" />
+		<put-attribute name="left" value="left" />
+		<put-attribute name="right" value="right" />
+		<put-attribute name="footer" value="footer" />
 	</definition>
 
+<!-- Content -->
+
+    <definition name="misc/welcome/content" template="/WEB-INF/jsp/content.jsp">
+		<put-attribute name="widget0" value="/WEB-INF/jsp/misc/welcome.jsp" />
+	</definition>	
 	<definition name="misc/welcome" extends="layout">
-		<put-attribute name="title" value="Welcome" />
-		<put-attribute name="content" value="/WEB-INF/jsp/misc/welcome.jsp" />
+		<put-attribute name="title" value="Главная" />
+		<put-attribute name="content" value="misc/welcome/content" />
 	</definition>
 
+    <definition name="restaurant/add/content" template="/WEB-INF/jsp/content.jsp">
+		<put-attribute name="widget0" value="/WEB-INF/jsp/restaurant/add.jsp" />
+	</definition>
 	<definition name="restaurant/add" extends="layout">
-		<put-attribute name="title" value="Add product" />
-		<put-attribute name="content" value="/WEB-INF/jsp/restaurant/add.jsp" />
+		<put-attribute name="title" value="Добавить заведение" />
+		<put-attribute name="content" value="restaurant/add/content" />
 	</definition>
 
+    <definition name="restaurant/find/content" template="/WEB-INF/jsp/content.jsp">
+		<put-attribute name="widget0" value="/WEB-INF/jsp/restaurant/find.jsp" />
+	</definition>
 	<definition name="restaurant/find" extends="layout">
-		<put-attribute name="title" value="List products" />
-		<put-attribute name="content" value="/WEB-INF/jsp/restaurant/find.jsp" />
+		<put-attribute name="title" value="Список заведений" />
+		<put-attribute name="content" value="restaurant/find/content" />
 	</definition>
 
+    <definition name="restaurant/show/content" template="/WEB-INF/jsp/content.jsp">
+		<put-attribute name="widget0" value="/WEB-INF/jsp/restaurant/show.jsp" />
+	</definition>
 	<definition name="restaurant/show" extends="layout">
-		<put-attribute name="title" value="Show product" />
-		<put-attribute name="content" value="/WEB-INF/jsp/restaurant/show.jsp" />
+		<put-attribute name="title" value="Заведение" />
+		<put-attribute name="content" value="restaurant/show/content" />
 	</definition>
 
 </tiles-definitions>
