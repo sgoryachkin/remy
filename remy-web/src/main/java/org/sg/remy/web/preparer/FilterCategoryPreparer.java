@@ -1,4 +1,4 @@
-package org.sg.remy.web.controller;
+package org.sg.remy.web.preparer;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class FilterCategoryController extends ViewPreparerSupport{
+public class FilterCategoryPreparer extends ViewPreparerSupport{
 	
 	@Autowired
 	private CommandActionService actionService;

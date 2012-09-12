@@ -8,12 +8,12 @@
 	<definition name="mainbanner" template="/WEB-INF/jsp/misc/mainbanner.jsp"/>
 	<definition name="xhtmlvalid" template="/WEB-INF/jsp/misc/xhtmlvalid.jsp"/>
 
-	<definition name="filter_categories" preparer="filterCategoryController" template="/WEB-INF/jsp/misc/filter_categories.jsp"/>	
+	<definition name="filter_categories" preparer="filterCategoryPreparer" template="/WEB-INF/jsp/misc/filter_categories.jsp"/>	
 	<definition name="filter_parms"  template="/WEB-INF/jsp/misc/filter_params.jsp"/>
 	<definition name="filter_text"  template="/WEB-INF/jsp/misc/filter_text.jsp"/>
 	
 	<definition name="category_all" template="/WEB-INF/jsp/misc/category_all.jsp"/>
-    <definition name="categorygroup_all" template="/WEB-INF/jsp/misc/categorygroup_all.jsp"/>
+    <definition name="categorygroup_all" preparer="categoryGroupAllPreparer" template="/WEB-INF/jsp/misc/categorygroup_all.jsp"/>
     
  <!-- Layout -->    
     
@@ -22,7 +22,9 @@
 	</definition>
 	
 	<definition name="left" template="/WEB-INF/jsp/left.jsp">
-		<put-attribute name="widget0" value="filter_categories" />
+	    <put-list-attribute name="widgets">
+			<add-attribute value="filter_categories" />
+		</put-list-attribute>
 	</definition>
 	
 	<definition name="right" template="/WEB-INF/jsp/right.jsp">
@@ -30,7 +32,10 @@
 	</definition>
 	
 	<definition name="footer" template="/WEB-INF/jsp/footer.jsp">
-		<put-attribute name="widget0" value="xhtmlvalid" />
+	    <put-list-attribute name="widgets">
+	    	<add-attribute value="xhtmlvalid"></add-attribute>
+	    	<add-attribute value="categorygroup_all"></add-attribute>
+	    </put-list-attribute>
 	</definition>
 	
 	<definition name="layout" template="/WEB-INF/jsp/layout.jsp">
