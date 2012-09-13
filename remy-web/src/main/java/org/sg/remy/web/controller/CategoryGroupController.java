@@ -23,21 +23,21 @@ public class CategoryGroupController {
 	CommandActionService actionService;
 	
 	@RequestMapping(value = "edit", method=RequestMethod.POST)
-	public String save(@ModelAttribute("productCategoryGroup") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
+	public String save(@ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
     {
         if (!result.hasErrors()) {
         	actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
-            return "redirect:/";
+            return "categorygroup/edit";
         } else {
-            return "";
+            return "categorygroup/edit";
         }
             
     }
 	
 	@RequestMapping(value = "edit", method=RequestMethod.GET)
-	public void get()
+	public void get(@ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup)
     {
-
+	
     }
 	
 }

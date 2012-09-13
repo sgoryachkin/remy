@@ -5,59 +5,61 @@
 
 <tiles-definitions>
 
-	<definition name="mainbanner" template="/WEB-INF/jsp/misc/mainbanner.jsp" />
-	<definition name="xhtmlvalid" template="/WEB-INF/jsp/misc/xhtmlvalid.jsp" />
+	<definition name="widget/misc/mainbanner" template="/WEB-INF/view/misc/mainbanner.jsp" />
+	<definition name="widget/misc/xhtmlvalid" template="/WEB-INF/view/misc/xhtmlvalid.jsp" />
+	<definition name="widget/misc/managers" template="/WEB-INF/view/misc/managers.jsp" />
 
-	<definition name="filter_categories" preparer="filterCategoryPreparer"
-		template="/WEB-INF/jsp/misc/filter_categories.jsp" />
-	<definition name="filter_parms" template="/WEB-INF/jsp/misc/filter_params.jsp" />
-	<definition name="filter_text" template="/WEB-INF/jsp/misc/filter_text.jsp" />
+	<definition name="widget/filter/categories" preparer="filterCategoryPreparer"
+		template="/WEB-INF/view/filter/categories.jsp" />
+	<definition name="widget/filter/parms" template="/WEB-INF/view/filter/params.jsp" />
+	<definition name="widget/filter/text" template="/WEB-INF/view/filter/text.jsp" />
 
-	<definition name="category_all" template="/WEB-INF/jsp/misc/category_all.jsp" />
-	<definition name="categorygroup_all" preparer="categoryGroupAllPreparer"
-		template="/WEB-INF/jsp/misc/categorygroup_all.jsp" />
+	<definition name="widget/category/all" template="/WEB-INF/view/category/all.jsp" />
+	<definition name="widget/categorygroup/all" preparer="categoryGroupAllPreparer"
+		template="/WEB-INF/view/categorygroup/all.jsp" />
 
-	<definition name="categorygroup_edit"
-		template="/WEB-INF/jsp/reference/categorygroup_edit.jsp" />
+	<definition name="widget/categorygroup/edit"
+		template="/WEB-INF/view/categorygroup/edit.jsp" />
+	<definition name="widget/category/edit" template="/WEB-INF/view/category/edit.jsp" />
 
 	<!-- Layout -->
 
-	<definition name="header" template="/WEB-INF/jsp/header.jsp">
+	<definition name="header" template="/WEB-INF/view/header.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="mainbanner" />
+			<add-attribute value="widget/misc/mainbanner" />
 		</put-list-attribute>
 	</definition>
 
-	<definition name="left" template="/WEB-INF/jsp/left.jsp">
+	<definition name="left" template="/WEB-INF/view/left.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="filter_categories" />
+			<add-attribute value="widget/filter/categories" />
 		</put-list-attribute>
 	</definition>
 
-	<definition name="right" template="/WEB-INF/jsp/right.jsp">
+	<definition name="right" template="/WEB-INF/view/right.jsp">
 		<put-list-attribute name="widgets">
-
+			<add-attribute value="widget/misc/managers" />
 		</put-list-attribute>
 	</definition>
 
-	<definition name="footer" template="/WEB-INF/jsp/footer.jsp">
+	<definition name="footer" template="/WEB-INF/view/footer.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="xhtmlvalid" />
+			<add-attribute value="widget/misc/xhtmlvalid" />
 		</put-list-attribute>
 	</definition>
 
-	<definition name="layout" template="/WEB-INF/jsp/layout.jsp">
+	<definition name="layout" template="/WEB-INF/view/layout.jsp">
 		<put-attribute name="header" value="header" />
 		<put-attribute name="left" value="left" />
 		<put-attribute name="right" value="right" />
 		<put-attribute name="footer" value="footer" />
 	</definition>
 
-	<!-- Content -->
+	<!-- Controllers view -->
 
-	<definition name="misc/welcome/content" template="/WEB-INF/jsp/content.jsp">
+	<definition name="misc/welcome/content" template="/WEB-INF/view/content.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="/WEB-INF/jsp/misc/welcome.jsp" />
+			<add-attribute value="/WEB-INF/view/misc/welcome.jsp" />
 		</put-list-attribute>
 	</definition>
 	<definition name="misc/welcome" extends="layout">
@@ -65,9 +67,9 @@
 		<put-attribute name="content" value="misc/welcome/content" />
 	</definition>
 
-	<definition name="restaurant/add/content" template="/WEB-INF/jsp/content.jsp">
+	<definition name="restaurant/add/content" template="/WEB-INF/view/content.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="/WEB-INF/jsp/restaurant/add.jsp" />
+			<add-attribute value="/WEB-INF/view/restaurant/add.jsp" />
 		</put-list-attribute>
 	</definition>
 	<definition name="restaurant/add" extends="layout">
@@ -75,9 +77,9 @@
 		<put-attribute name="content" value="restaurant/add/content" />
 	</definition>
 
-	<definition name="restaurant/find/content" template="/WEB-INF/jsp/content.jsp">
+	<definition name="restaurant/find/content" template="/WEB-INF/view/content.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="/WEB-INF/jsp/restaurant/find.jsp" />
+			<add-attribute value="/WEB-INF/view/restaurant/find.jsp" />
 		</put-list-attribute>
 	</definition>
 	<definition name="restaurant/find" extends="layout">
@@ -85,9 +87,9 @@
 		<put-attribute name="content" value="restaurant/find/content" />
 	</definition>
 
-	<definition name="restaurant/show/content" template="/WEB-INF/jsp/content.jsp">
+	<definition name="restaurant/show/content" template="/WEB-INF/view/content.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="/WEB-INF/jsp/restaurant/show.jsp" />
+			<add-attribute value="/WEB-INF/view/restaurant/show.jsp" />
 		</put-list-attribute>
 	</definition>
 	<definition name="restaurant/show" extends="layout">
@@ -95,17 +97,17 @@
 		<put-attribute name="content" value="restaurant/show/content" />
 	</definition>
 
-	<definition name="reference/categorygroup_edit/content"
-		template="/WEB-INF/jsp/content.jsp">
+	<definition name="categorygroup/edit/content"
+		template="/WEB-INF/view/content.jsp">
 		<put-list-attribute name="widgets">
-			<add-attribute value="categorygroup_edit" />
-			<add-attribute value="categorygroup_all" />
+			<add-attribute value="widget/categorygroup/edit" />
+			<add-attribute value="widget/categorygroup/all" />
 		</put-list-attribute>
 	</definition>
-	<definition name="reference/categorygroup_edit" extends="layout">
+	<definition name="categorygroup/edit" extends="layout">
 		<put-attribute name="title" value="Управление группами категорий" />
 		<put-attribute name="content"
-			value="reference/categorygroup_edit/content" />
+			value="categorygroup/edit/content" />
 	</definition>
 
 </tiles-definitions>

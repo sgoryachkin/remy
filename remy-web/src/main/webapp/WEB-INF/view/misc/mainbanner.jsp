@@ -4,9 +4,7 @@
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.1">
 
 	<div class="slider-wrapper theme-default">
-		<div id="main_banner" class="nivoSlider" style="height: 200px">
-
-		</div>
+		<div id="main_banner" class="nivoSlider" style="height: 200px"/>
 	</div>
 
 	<script type="text/javascript"

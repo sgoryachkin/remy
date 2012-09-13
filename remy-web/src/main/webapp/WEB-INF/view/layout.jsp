@@ -16,7 +16,6 @@
 <meta http-equiv="Content-Type"
 	content="application/xhtml+xml; charset=utf-8" />
 
-
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 
 <link rel="stylesheet"
@@ -44,7 +43,6 @@
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-1.7.2.min.js" />
-
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/jquery/js/jquery-ui-1.8.21.custom.min.js" />

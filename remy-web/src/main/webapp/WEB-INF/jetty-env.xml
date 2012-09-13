@@ -31,6 +31,14 @@
 				<Arg>
 					<Map>
 						<Entry>
+							<Item>hibernate.show_sql</Item>
+							<Item>
+								<New class="java.lang.String">
+									<Arg>false</Arg>
+								</New>
+							</Item>
+						</Entry>
+						<Entry>
 							<Item>hibernate.transaction.manager_lookup_class</Item>
 							<Item>
 								<New class="java.lang.String">

@@ -5,7 +5,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.1">
 
 
-	<div style="margin-top: 5px; padding: 5px;"
+	<div style="margin: 5px; padding: 5px;"
 		class="ui-widget ui-widget-content ui-corner-all">
 
 		<h2>
