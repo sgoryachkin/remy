@@ -14,22 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping(value= "reference")
-public class ReferenceFillController {
+@RequestMapping(value= "categorygroup")
+public class CategoryGroupController {
 	
-	private static Logger LOG = LoggerFactory.getLogger(ReferenceFillController.class); 
+	private static Logger LOG = LoggerFactory.getLogger(CategoryGroupController.class); 
 	
 	@Autowired
 	CommandActionService actionService;
 	
-	@RequestMapping(value = "categorygroup_edit", method=RequestMethod.POST)
-	public void save(@ModelAttribute("productCategoryGroup") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
+	@RequestMapping(value = "edit", method=RequestMethod.POST)
+	public String save(@ModelAttribute("productCategoryGroup") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
     {
-            actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
+        if (!result.hasErrors()) {
+        	actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
+            return "redirect:/";
+        } else {
+            return "";
+        }
+            
     }
 	
-	@RequestMapping(value = "categorygroup_edit", method=RequestMethod.GET)
-	public void get(@ModelAttribute("productCategoryGroup") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
+	@RequestMapping(value = "edit", method=RequestMethod.GET)
+	public void get()
     {
 
     }
