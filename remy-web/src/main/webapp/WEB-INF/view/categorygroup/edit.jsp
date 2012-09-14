@@ -36,6 +36,7 @@
 			<table>
 				<tr>
 					<td><input type="submit" value="Добавить/Изменить" /></td>
+					<td><div class="invalid"><c:out value="${categorygroupBeanError}"/></div></td>
 				</tr>
 			</table>
 		</form:form>
