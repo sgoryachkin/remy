@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
@@ -19,10 +21,13 @@ public abstract class AbstractEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@Column(length = 30, nullable = true, unique = true)
+	@Size(min=1, max=30)
+	@Column(length = 60, nullable = true, unique = true)
 	private String code;
 
-	@Column(length = 100, nullable = false)
+	@Size(min=1, max=200)
+	@NotNull
+	@Column(length = 400, nullable = false)
 	private String name;
 
 	public Long getId() {

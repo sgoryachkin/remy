@@ -23,15 +23,19 @@ public class CategoryGroupController {
 	CommandActionService actionService;
 	
 	@RequestMapping(value = "edit", method=RequestMethod.POST)
-	public String save(@ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
+	public void save(@ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
     {
         if (!result.hasErrors()) {
-        	actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
-            return "categorygroup/edit";
+        	try{
+        		actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
+        	} catch (Exception e){
+        		LOG.error(e.getLocalizedMessage(), e);
+        		model.addAttribute("categorygroupBeanError", "Неудалось добавить запись. Ошибка при добавлении.");
+        	}
         } else {
-            return "categorygroup/edit";
-        }
-            
+        	model.addAttribute("categorygroupBeanError", "Неудалось добавить запись. Ошибка валидации.");
+		}
+   
     }
 	
 	@RequestMapping(value = "edit", method=RequestMethod.GET)
