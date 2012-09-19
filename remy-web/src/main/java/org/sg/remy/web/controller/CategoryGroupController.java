@@ -1,5 +1,7 @@
 package org.sg.remy.web.controller;
 
+import javax.validation.Valid;
+
 import org.sg.remy.business.entity.ProductCategoryGroup;
 import org.sg.remy.business.service.action.SaveProductCategoryGroup;
 import org.sg.remy.common.cmd.api.CommandActionService;
@@ -23,8 +25,9 @@ public class CategoryGroupController {
 	CommandActionService actionService;
 	
 	@RequestMapping(value = "edit", method=RequestMethod.POST)
-	public void save(@ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
+	public void save(@Valid @ModelAttribute("categorygroupBean") ProductCategoryGroup productCategoryGroup, BindingResult result, Model model)
     {
+
         if (!result.hasErrors()) {
         	try{
         		actionService.doAction(new SaveProductCategoryGroup(productCategoryGroup));
