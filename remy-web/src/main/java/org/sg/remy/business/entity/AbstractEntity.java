@@ -22,12 +22,12 @@ public abstract class AbstractEntity implements Serializable {
 	private Long id;
 
 	@Size(min=1, max=30)
-	@Column(length = 60, nullable = true, unique = true)
+	@Column(length = 30, nullable = true, unique = true)
 	private String code;
 
-	@Size(min=1, max=200)
+	@Size(min=1, max=250)
 	@NotNull
-	@Column(length = 400, nullable = false)
+	@Column(length = 250, nullable = false)
 	private String name;
 
 	public Long getId() {
