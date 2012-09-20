@@ -12,6 +12,7 @@
 	<context:component-scan base-package="org.sg.remy" />
 	
 	<import resource="context-persistence.xml" />
+	<import resource="context-security.xml" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" />
