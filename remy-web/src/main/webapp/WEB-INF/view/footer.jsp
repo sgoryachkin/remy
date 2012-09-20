@@ -7,16 +7,18 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:tiles="http://tiles.apache.org/tags-tiles" version="2.1">
 
-	<div style="margin: 5px; padding: 5px;"
-		class="ui-widget ui-widget-content ui-corner-all">
+	<div style="margin: 3px;" class="ui-widget">
+		<div style="text-align: left; padding: 5px;"
+			class="ui-widget-content ui-corner-all">
 
-		<tiles:useAttribute id="footerlist" name="widgets"
-			classname="java.util.List" />
+			<tiles:useAttribute id="footerlist" name="widgets"
+				classname="java.util.List" />
 
-		<c:forEach var="item" items="${footerlist}">
-			<tiles:insertAttribute value="${item}" />
-		</c:forEach>
+			<c:forEach var="item" items="${footerlist}">
+				<tiles:insertAttribute value="${item}" />
+			</c:forEach>
 
+		</div>
 	</div>
 
 </jsp:root>

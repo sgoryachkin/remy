@@ -9,6 +9,10 @@
 		<div style="text-align: left; padding: 5px;"
 			class="ui-widget-content ui-corner-bottom">
 
+			<form action="${pageContext.request.contextPath}/signin/facebook" method="POST">
+				<button type="submit">Sign in with Facebook</button>
+			</form>
+
 			<a
 				href="${pageContext.request.contextPath}/dispatcher/categorygroup/edit">Группы
 				категорий</a> <br /> <a

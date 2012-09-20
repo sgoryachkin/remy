@@ -4,21 +4,25 @@
 	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" version="2.1">
 
-	<div style="margin: 5px; padding: 5px;"
-		class="ui-widget ui-widget-content ui-corner-all">
+	<div style="margin: 3px;" class="ui-widget">
+		<div style="text-align: center; padding: 5px;"
+			class="ui-widget-header ui-corner-top">Фильтр: [TODO: Краткое условие фильтра]</div>
+		<div style="text-align: left; padding: 5px;"
+			class="ui-widget-content ui-corner-bottom">
 
-		<c:forEach items="${pagingResult.result}" var="bean">
+			<c:forEach items="${pagingResult.result}" var="bean">
 
-			<a
-				href="${pageContext.request.contextPath}/dispatcher/restaurant/show?id=${bean.id}"><c:out
-					value="${bean.name}" /></a>
+				<a
+					href="${pageContext.request.contextPath}/dispatcher/restaurant/show?id=${bean.id}"><c:out
+						value="${bean.name}" /></a>
 
-			<p>
-				<c:out value="${bean.description}" />
-			</p>
+				<p>
+					<c:out value="${bean.description}" />
+				</p>
 
-		</c:forEach>
+			</c:forEach>
 
+		</div>
 	</div>
 
 </jsp:root>

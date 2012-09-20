@@ -5,9 +5,11 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.1">
 
-	<div style="margin: 5px; padding: 5px;"
-		class="ui-widget ui-widget-content ui-corner-all">
-		<h2>Добавить/Изменить группу категорий</h2>
+	<div style="margin: 3px;" class="ui-widget">
+		<div style="text-align: center; padding: 5px;"
+			class="ui-widget-header ui-corner-top">Управление группами категорий</div>
+		<div style="text-align: left; padding: 5px;"
+			class="ui-widget-content ui-corner-bottom">
 		<form:form commandName="categorygroupBean" id="categorygroupBean_form">
 			<table>
 				<tbody>
@@ -40,5 +42,6 @@
 				</tr>
 			</table>
 		</form:form>
+	</div>
 	</div>
 </jsp:root>
