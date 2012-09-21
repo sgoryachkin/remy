@@ -1,22 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/context/app-context.xml</param-value>
+	</context-param>
 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	<listener>  
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>  
-    </listener>
+	<!-- <listener> <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class> 
+		</listener> -->
 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/context/context.xml</param-value>
-	</context-param>
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/context/dispatcher-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet>
+		<servlet-name>viewStatusMessages</servlet-name>
+		<servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
+	</servlet>
 
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -31,36 +44,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		</init-param>
 	</filter>
 
-	<filter>
-		<filter-name>securityFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<init-param>
-			<param-name>targetBeanName</param-name>
-			<param-value>springSecurityFilterChain</param-value>
-		</init-param>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>securityFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-
-	<servlet>
-		<servlet-name>dispatcherServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet>
-		<servlet-name>viewStatusMessages</servlet-name>
-		<servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
-	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/dispatcher/*</url-pattern>
@@ -70,6 +53,12 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>viewStatusMessages</servlet-name>
 		<url-pattern>/status</url-pattern>
 	</servlet-mapping>
+
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<servlet-name>dispatcherServlet</servlet-name>
+	</filter-mapping>
+
 
 	<persistence-unit-ref>
 		<persistence-unit-ref-name>persistence/RemyPersistenceUnit</persistence-unit-ref-name>

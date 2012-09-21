@@ -198,7 +198,7 @@ public class InitDBComponent {
 		List<ProductCategory> categories = getAllProductCategory();
 		System.out.println(categories);
 		
-		for (int i = 0; i < 51; i++) {
+		for (int i = 0; i < 11; i++) {
 			Product r = new Product();
 			r.setCategories(categories);
 			r.setName("Заведение " + i);
