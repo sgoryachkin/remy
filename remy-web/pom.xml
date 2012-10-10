@@ -104,12 +104,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.google.gdata.gdata-java-client</groupId>
-			<artifactId>gdata-photos-2.0</artifactId>
-			<version>1.47.0</version>
-		</dependency>
-
-		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>

@@ -1,17 +1,12 @@
 package org.sg.remy.common.image;
 
 import java.io.InputStream;
-import java.net.URL;
-
-import com.google.gdata.client.photos.PicasawebService;
-import com.google.gdata.data.media.MediaSource;
-import com.google.gdata.data.media.MediaStreamSource;
-import com.google.gdata.data.photos.PhotoEntry;
 
 public class ImageServiceImpl implements ImageService{
 
 	@Override
 	public String uploadImage(InputStream is) {
+		/*
 		PicasawebService picaseService = new PicasawebService("exampleCo-exampleApp-1");
 		
 		try {
@@ -28,6 +23,9 @@ public class ImageServiceImpl implements ImageService{
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		}
+		*/
+		// TODO Удалить
+		return null;
 	}
 
 	@Override
