@@ -12,12 +12,14 @@ import org.springframework.transaction.jta.JtaTransactionManager;
 
 @Configuration
 @ComponentScan(basePackageClasses = BusinessContext.class)
-@EnableTransactionManagement()
+@EnableTransactionManagement
 public class BusinessContext {
+	
+	public static final String PERSISTENCE_UNIT_NAME = "persistence/RemyPersistenceUnit";
 	
 	@Bean
 	public EntityManagerFactory entityManagerFactory() {
-		return (EntityManagerFactory) new SimpleJndiBeanFactory().getBean("persistence/RemyPersistenceUnit");
+		return (EntityManagerFactory) new SimpleJndiBeanFactory().getBean(PERSISTENCE_UNIT_NAME);
 	}
 
 	@Bean
