@@ -5,8 +5,13 @@
 	version="2.5">
 
 	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+
+	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/context/app-context.xml</param-value>
+		<param-value>org.sg.remy.RemyApplicationContext</param-value>
 	</context-param>
 
 	<listener>
@@ -84,5 +89,5 @@
 	<welcome-file-list>
 		<welcome-file>dispatcher/misc/welcome</welcome-file>
 	</welcome-file-list>
-	
+
 </web-app>
